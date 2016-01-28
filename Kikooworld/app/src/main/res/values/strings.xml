@@ -3,6 +3,6 @@
     <string name="loginLoginScreen">Login</string>
     <string name="loginButtonLoginScreen">Log in</string>
     <string name="dummyTextLoginScreen">Intranet Password</string>
-    <string name="Photo">photo</string>
+    <string name="Photo">Photo</string>
     <string name="WrongConnectionArgs">Invalid login/password combination</string>
 </resources>
