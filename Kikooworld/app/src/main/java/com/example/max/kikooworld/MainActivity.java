@@ -25,10 +25,9 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 RequestParams rq = new RequestParams();
-                String logi = String.valueOf(((EditText) findViewById(R.id.LoginScreenLoginTextField)).getText());
-                rq.put("login", logi);
+                rq.put("login", ((EditText) findViewById(R.id.LoginScreenLoginTextField)).getText());
                 rq.put("password", ((EditText) findViewById(R.id.LoginScreenPasswordTextField)).getText());
-                client.loginPostRequest(rq, logi);
+                client.loginPostRequest(rq);
             }
         });
     }

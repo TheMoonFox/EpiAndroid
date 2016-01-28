@@ -28,7 +28,6 @@ public class intraClient extends AsyncTask {
     private static final String BASE_URL = "https://epitech-api.herokuapp.com/";
     private String token;
     private String photoUrl;
-    private String login_l;
     private static AsyncHttpClient client = new AsyncHttpClient();
     private MainActivity mainActivity;
 
@@ -49,21 +48,22 @@ public class intraClient extends AsyncTask {
         return BASE_URL + relativeUrl;
     }
 
-    public void loginPostRequest(final RequestParams champs, final String login_str)
+    public void loginPostRequest(final RequestParams champs)
     {
         post("login", champs, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String s = "";
-                login_l = login_str;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
 
                     // PARSING JSON: REPONSE REQUETE "LOGIN" //
                     try {
+                        //LoginPostResponse = Acrobate.loginPostParse(s);
                         JSONObject jsonObject = new JSONObject(s);
                         token = jsonObject.getString("token");
+
                         System.out.println("[FOXDEBUG] Parsed JSON Token = " + token);
                     } catch (JSONException e) { e.printStackTrace(); }
                     // ------------------------------------- //
@@ -84,6 +84,22 @@ public class intraClient extends AsyncTask {
         // /infos POST
         //"token":"login_token"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void planningGetRequest(final RequestParams champs) {
@@ -94,6 +110,22 @@ public class intraClient extends AsyncTask {
         //"start":"YEAR-MM-DD"
         //"end":"YEAR-MM-DD"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void projectsGetRequest(final RequestParams champs) {
@@ -102,6 +134,22 @@ public class intraClient extends AsyncTask {
         // /projects GET
         //"token":"login_token"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void projectGetRequest(final RequestParams champs) {
@@ -114,6 +162,22 @@ public class intraClient extends AsyncTask {
         //"codeinstance":"GAY-6-9"
         //"codeacti":"acti-123456"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void projectPostRequest(final RequestParams champs) {
@@ -126,6 +190,22 @@ public class intraClient extends AsyncTask {
         //"codeinstance":"GAY-666-9"
         //"codeacti":"acti-123456"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void projectDeleteRequest(final RequestParams champs) {
@@ -138,6 +218,22 @@ public class intraClient extends AsyncTask {
         //"codeinstance":"GAY-666-9"
         //"codeacti":"acti-123456"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void projectFilesGetRequest(final RequestParams champs) {
@@ -150,6 +246,22 @@ public class intraClient extends AsyncTask {
         //"codeinstance":"GAY-666-9"
         //"codeacti":"acti-123456"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void modulesGetRequest(final RequestParams champs) {
@@ -158,6 +270,22 @@ public class intraClient extends AsyncTask {
         // /modules GET
         //"token":"login_token"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void allmodulesGetRequest(final RequestParams champs) {
@@ -169,6 +297,22 @@ public class intraClient extends AsyncTask {
         //"location":"FR/GAY"
         //"course":"bachelor/dummy"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void moduleGetRequest(final RequestParams champs) {
@@ -180,6 +324,22 @@ public class intraClient extends AsyncTask {
         //"codemodule":"B-GAY-666-1"
         //"codeinstance":"GAY-666-9"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void modulePostRequest(final RequestParams champs) {
@@ -191,6 +351,22 @@ public class intraClient extends AsyncTask {
         //"codemodule":"B-GAY-666-1"
         //"codeinstance":"GAY-666-9"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void moduleDeleteRequest(final RequestParams champs) {
@@ -202,6 +378,22 @@ public class intraClient extends AsyncTask {
         //"codemodule":"B-GAY-666-1"
         //"codeinstance":"GAY-666-9"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void eventGetRequest(final RequestParams champs) {
@@ -215,6 +407,22 @@ public class intraClient extends AsyncTask {
         //"codeacti":"acti-123456"
         //"codeevent":"event-123456"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void eventPostRequest(final RequestParams champs) {
@@ -228,6 +436,22 @@ public class intraClient extends AsyncTask {
         //"codeacti":"acti-123456"
         //"codeevent":"event-123456"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void eventDeleteRequest(final RequestParams champs) {
@@ -241,6 +465,22 @@ public class intraClient extends AsyncTask {
         //"codeacti":"acti-123456"
         //"codeevent":"event-123456"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void marksGetRequest(final RequestParams champs) {
@@ -249,6 +489,22 @@ public class intraClient extends AsyncTask {
         // /marks GET
         //"token":"login_token"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void messagesGetRequest(final RequestParams champs) {
@@ -257,6 +513,22 @@ public class intraClient extends AsyncTask {
         // /messages GET
         //"token":"login_token"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void alertsGetRequest(final RequestParams champs) {
@@ -265,9 +537,25 @@ public class intraClient extends AsyncTask {
         // /alerts GET
         //"token":"login_token"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
-    public void photoGet(RequestParams params)
+    public void photoGetRequest(RequestParams params)
     {
         get("photo", params, new AsyncHttpResponseHandler() {
             @Override
@@ -279,6 +567,7 @@ public class intraClient extends AsyncTask {
                     //DEBUT PARSING//
                     System.out.println("[FOXDEBUG] JSON response to 'photo' request = " + response);
                     try {
+                        //InfosPostResponse = Acrobate.infosPostParse(s);
                         JSONObject jsonObject = new JSONObject(response);
                         photoUrl = jsonObject.getString("url");
                         System.out.println("[FOXDEBUG] Parsed JSON Photo URL = " + photoUrl);
@@ -313,6 +602,22 @@ public class intraClient extends AsyncTask {
         //"codeevent":"event-123456"
         //"tokenvalidationcode":"12345678"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void trombiGetRequest(final RequestParams champs) {
@@ -323,6 +628,22 @@ public class intraClient extends AsyncTask {
         //"year":2014
         //"location":"FR/GAY"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void userGetRequest(final RequestParams champs) {
@@ -332,6 +653,22 @@ public class intraClient extends AsyncTask {
         //"token":"login_token"
         //"user":"leaugi_n"
 
+        post("login", champs, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                String s = "";
+                try {
+                    s = new String(responseBody, "ISO-8859-1");
+                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
+                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+            }
+        });
     }
 
     public void disconnect() {
