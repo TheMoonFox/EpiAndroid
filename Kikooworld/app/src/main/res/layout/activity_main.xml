@@ -12,15 +12,34 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="190dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0"
+            android:src="@drawable/ic_menu_camera"
+            android:contentDescription="@string/Photo" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/WrongConnectionArgs"
+            android:id="@+id/WrongLogin"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.15"
+            android:visibility="invisible"
+            android:textStyle="normal"
+            android:textSize="20sp"
+            android:textColor="#FF0000" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/LoginScreenLoginTextField"
-            android:layout_marginTop="150dp"
-            android:editable="true"
-            android:elegantTextHeight="false"
             android:hint="@string/loginLoginScreen" />
 
         <EditText
@@ -30,7 +49,6 @@
             android:ems="10"
             android:id="@+id/LoginScreenPasswordTextField"
             android:layout_gravity="center_horizontal"
-            android:editable="true"
             android:hint="@string/dummyTextLoginScreen" />
 
         <Button
