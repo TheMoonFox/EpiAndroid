@@ -3,6 +3,7 @@ package com.example.max.kikooworld;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 
+import com.example.max.kikooworld.Acrobate.LoginPostResponse;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -55,14 +56,15 @@ public class intraClient extends AsyncTask {
                 System.out.println("[MAXDEBUG] Code de retour : " + statusCode);
                 System.out.println("[MAXDEBUG]" + Arrays.toString(headers));
                 String s = "";
+                LoginPostResponse lpr;
                 login_l = login_str;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
                     // PARSING JSON: REPONSE REQUETE "LOGIN" //
-                    try {
-                        JSONObject jsonObject = new JSONObject(s);
-                        token = jsonObject.getString("token");
+                        lpr = (LoginPostResponse) new LoginPostResponse().execute(s);
+                        //JSONObject jsonObject = new JSONObject(s);
+                        //token = jsonObject.getString("token");
                         System.out.println("[FOXDEBUG] Parsed JSON Token = " + token);
                         // REQUETE PHOTO DANS LA FOULEE //
                         RequestParams photoParams = new RequestParams();
@@ -70,7 +72,6 @@ public class intraClient extends AsyncTask {
                         photoParams.add("login", login_l);
                         getFace(photoParams); // REQUETE PHOTO
                         // ---------------------------- //
-                    } catch (JSONException e) { e.printStackTrace(); }
                     // ------------------------------------- //
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
