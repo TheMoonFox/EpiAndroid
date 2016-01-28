@@ -117,7 +117,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //PlanningGetResponse = Acrobate.planningGetParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -141,7 +141,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //ProjectsGetResponse = Acrobate.projectsGetParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -169,7 +169,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //ProjectGetResponse = Acrobate.projectGetParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -197,7 +197,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //ProjectPostResponse = Acrobate.projectPostParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -225,7 +225,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //ProjectDeleteResponse = Acrobate.projectDeleteParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -253,7 +253,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //ProkectFilesGetResponse = Acrobate.projectFilesGetParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -277,7 +277,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //ModulesGetResponse = Acrobate.modulesGetParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -304,7 +304,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //AllmodulesGetResponse = Acrobate.allmodulesGetParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -331,7 +331,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //ModuleGetResponse = Acrobate.moduleGetParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -358,7 +358,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //ModulePostResponse = Acrobate.modulePostParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -385,7 +385,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //ModuleDeleteResponse = Acrobate.moduleDeleteParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -414,7 +414,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //EventGetResponse = Acrobate.eventGetParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -443,7 +443,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //EventPostResponse = Acrobate.eventPostParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -472,7 +472,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //EventDeleteResponse = Acrobate.eventDeleteParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -496,7 +496,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //MarksGetResponse = Acrobate.marksGetParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -520,7 +520,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //MessagesGetResponse = Acrobate.messagesGetParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -544,7 +544,7 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-                    //InfosPostResponse = Acrobate.infosPostParse(s);
+                    //AlertsGetResponse = Acrobate.alertsGetParse(s);
                 } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
             }
 
@@ -567,12 +567,11 @@ public class intraClient extends AsyncTask {
                     //DEBUT PARSING//
                     System.out.println("[FOXDEBUG] JSON response to 'photo' request = " + response);
                     try {
-                        //InfosPostResponse = Acrobate.infosPostParse(s);
+                        //PhotoGetResponse = Acrobate.photoGetParse(s);
                         JSONObject jsonObject = new JSONObject(response);
                         photoUrl = jsonObject.getString("url");
                         System.out.println("[FOXDEBUG] Parsed JSON Photo URL = " + photoUrl);
                         mainActivity.setPhoto(photoUrl);
-                        //photoUrl = photoUrl + ".jpg";
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
