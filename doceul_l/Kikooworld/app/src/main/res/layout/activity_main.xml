@@ -12,7 +12,22 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <FrameLayout
+            android:layout_width="69dp"
+            android:layout_height="81dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.25"></FrameLayout>
+
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="190dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.25"
+            android:src="@drawable/ic_menu_camera"/>
 
         <EditText
             android:layout_width="match_parent"
