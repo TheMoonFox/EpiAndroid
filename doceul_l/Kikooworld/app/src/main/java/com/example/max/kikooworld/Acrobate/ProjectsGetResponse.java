@@ -15,7 +15,7 @@ import java.util.List;
  */
 
 public class ProjectsGetResponse extends AsyncTask<String, Void, List<ProjectsGetItem>>{
-    List<ProjectsGetItem> projectsGetList;
+    private List<ProjectsGetItem> projectsGetList;
 
     @Override
     protected List<ProjectsGetItem> doInBackground(String... s) {
@@ -46,4 +46,6 @@ public class ProjectsGetResponse extends AsyncTask<String, Void, List<ProjectsGe
         } catch (JSONException e) { e.printStackTrace(); }
         return this.projectsGetList;
     }
+
+    public List<ProjectsGetItem> getProjectsGetList() { return this.projectsGetList; }
 }
