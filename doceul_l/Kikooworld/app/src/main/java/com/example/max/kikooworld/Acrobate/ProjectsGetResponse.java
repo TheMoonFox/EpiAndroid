@@ -14,11 +14,11 @@ import java.util.List;
  * Created by Fox on 28/01/2016.
  */
 
-public class ProjectsGetResponse extends AsyncTask<String, Void, List<ProjectsGetItem>>{
+public class ProjectsGetResponse extends AsyncTask<String, Void, ProjectsGetResponse>{
     private List<ProjectsGetItem> projectsGetList;
 
     @Override
-    protected List<ProjectsGetItem> doInBackground(String... s) {
+    protected ProjectsGetResponse doInBackground(String... s) {
         String jsonStr = s[0];
         JSONArray jA = null;
         try { jA = new JSONArray(jsonStr); }
@@ -44,7 +44,7 @@ public class ProjectsGetResponse extends AsyncTask<String, Void, List<ProjectsGe
                         type_acti_code, codeacti, registered, codeinstance, type_acti);
                 projectsGetList.add(item); }
         } catch (JSONException e) { e.printStackTrace(); }
-        return this.projectsGetList;
+        return this;
     }
 
     public List<ProjectsGetItem> getProjectsGetList() { return this.projectsGetList; }
