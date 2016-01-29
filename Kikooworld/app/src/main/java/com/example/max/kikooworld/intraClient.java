@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.example.max.kikooworld.Acrobate.AcrobateItems.MarksGetItem;
 import com.example.max.kikooworld.Acrobate.AcrobateItems.MessagesGetItem;
+import com.example.max.kikooworld.Acrobate.AlertsGetResponse;
 import com.example.max.kikooworld.Acrobate.MarksGetResponse;
 import com.example.max.kikooworld.Acrobate.MessagesGetResponse;
 import com.example.max.kikooworld.Acrobate.PlanningGetResponse;
@@ -628,11 +629,11 @@ public class intraClient extends AsyncTask {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String s = "";
-                //AlertsGetResponse agr;
+                AlertsGetResponse agr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'alerts' request = " + s);
-                    //agr = new AlertsGetResponse().execute(s);
+                    agr = (AlertsGetResponse) new AlertsGetResponse().execute(s);
                     println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
