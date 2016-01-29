@@ -21,13 +21,12 @@ public class MainActivity extends AppCompatActivity {
         final Button button = (Button) findViewById(R.id.loginButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 RequestParams rq = new RequestParams();
-                rq.put("login", ((EditText) findViewById(R.id.LoginScreenLoginTextField)).getText());
+                String log = String.valueOf(((EditText) findViewById(R.id.LoginScreenLoginTextField)).getText());
+                rq.put("login", log);
                 rq.put("password", ((EditText) findViewById(R.id.LoginScreenPasswordTextField)).getText());
                 client.loginPostRequest(rq);
-                RequestParams rq2 = new RequestParams();
-                rq2.put("token", client.getToken());
-                client.infosPostRequest(rq2);
             }
         });
     }

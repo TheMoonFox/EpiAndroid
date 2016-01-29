@@ -17,6 +17,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".home"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".notes"
+            android:label="@string/title_activity_notes"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".alerte"
+            android:label="@string/title_activity_alerte"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".messages"
+            android:label="@string/title_activity_messages"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".modules"
+            android:label="@string/title_activity_modules"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".planning"
+            android:label="@string/title_activity_planning"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

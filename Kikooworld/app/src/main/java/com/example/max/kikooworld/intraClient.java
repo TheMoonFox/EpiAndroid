@@ -1,11 +1,17 @@
 package com.example.max.kikooworld;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.max.kikooworld.Acrobate.AcrobateItems.MarksGetItem;
+import com.example.max.kikooworld.Acrobate.AcrobateItems.MessagesGetItem;
+import com.example.max.kikooworld.Acrobate.MarksGetResponse;
+import com.example.max.kikooworld.Acrobate.MessagesGetResponse;
+import com.example.max.kikooworld.Acrobate.UserGetResponse;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -14,7 +20,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -66,9 +74,12 @@ public class intraClient extends AsyncTask {
                     // PARSING JSON: REPONSE REQUETE "LOGIN" //
                     try {
                         //lpr = new loginPostResponse().execute(s);
+                        println("Request OK");
                         JSONObject jsonObject = new JSONObject(s);
                         token = jsonObject.getString("token");
                         System.out.println("[FOXDEBUG] Parsed JSON Token = " + token);
+                        Intent intent = new Intent(mainActivity, home.class);
+                        mainActivity.startActivity(intent);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -101,6 +112,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'infos' request = " + s);
                     //ipr = new InfosPostRequest().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -130,6 +142,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'planning' request = " + s);
                     //pgr = new PlanningGetRequest().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -157,6 +170,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'projects' request = " + s);
                     //pgr = new ProjectsGetResponse().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -188,6 +202,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'project' request = " + s);
                     //pgr = new ProjectGetResponse().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -219,6 +234,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'project' request = " + s);
                     //ppr = new ProjectPostResponse().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -250,6 +266,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'project' request = " + s);
                     //pdr = new ProjectDeleteResponse().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -281,6 +298,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'project' request = " + s);
                     //pfgr = new ProjectFilesGetResponse().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -308,6 +326,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'modules' request = " + s);
                     //mgr = new ModulesGetResponse().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -338,6 +357,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'allmodules' request = " + s);
                     //agr = new AllmodulesGetResponse().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -368,6 +388,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'module' request = " + s);
                     //mgr = new ModuleGetResponse().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -398,6 +419,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'module' request = " + s);
                     //mpr = new ModulePostResponse().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -428,6 +450,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[FOXDEBUG] JSON response to 'module' request = " + s);
                     //mdr = new ModuleDeleteResponse().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -435,7 +458,7 @@ public class intraClient extends AsyncTask {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                ((TextView) mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+                System.out.println("moduleDeleteRequest failed, error code : " + statusCode);
             }
         });
     }
@@ -460,6 +483,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'event' request = " + s);
                     //egr = new EventGetResponse().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -492,6 +516,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'event' request = " + s);
                     //epr = new EventPostResponse().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -524,6 +549,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'event' request = " + s);
                     //edr = new EventDeleteResponse().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -546,12 +572,17 @@ public class intraClient extends AsyncTask {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String s = "";
-                //MarksGetResponse mgr;
+                MarksGetResponse mgr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
-                    System.out.println("[MAXDEBUG] JSON response to 'marks' request = " + s);
-                    //mgr = new MarksGetResponse().execute(s);
-                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+                    //System.out.println("[MAXDEBUG] JSON response to 'marks' request = " + s);
+                    mgr = (MarksGetResponse) new MarksGetResponse().execute(s);
+                    println("Request OK");
+                    ArrayList<MarksGetItem> lily = mgr.getMarksGetList();
+                    System.out.println(lily.get(0).getCorrecteur());
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -571,11 +602,14 @@ public class intraClient extends AsyncTask {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String s = "";
-                //MessagesGetResponse mgr;
+                MessagesGetResponse mgr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'messages' request = " + s);
-                    //mgr = new MessagesGetResponse().execute(s);
+                    mgr = (MessagesGetResponse) new MessagesGetResponse().execute(s);
+                    println("Request OK");
+                    ArrayList<MessagesGetItem> lily = mgr.getMessagesGetList();
+                    System.out.println(lily.get(0).getUserUrl());
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -603,6 +637,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'alerts' request = " + s);
                     //agr = new AlertsGetResponse().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -626,9 +661,10 @@ public class intraClient extends AsyncTask {
                     response = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'photo' request = " + response);
                     //pgr = new PhotoGetResponse().execute(s);
-                    }
-                    // ------------------------------------- //
-                    catch (UnsupportedEncodingException e) {
+                    println("Request OK");
+                }
+                // ------------------------------------- //
+                catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
             }
@@ -661,7 +697,10 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'token' request = " + s);
                     //tpr = new TokenPostResponse().execute(s);
-                } catch (UnsupportedEncodingException e) { e.printStackTrace(); }
+                    println("Request OK");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
@@ -688,6 +727,7 @@ public class intraClient extends AsyncTask {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'trombi' request = " + s);
                     //tgr = new TrombiGetRespponse().execute(s);
+                    println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -711,11 +751,18 @@ public class intraClient extends AsyncTask {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String s = "";
-                //UserGetResponse ugr;
+                UserGetResponse ugr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'user' request = " + s);
-                    //ugr = new UsserGetResponse().execute(s);
+                    ugr = (UserGetResponse) new UserGetResponse().execute(s);
+                    println("request OK");
+                    System.out.println(ugr.getCourseCode());
+                    System.out.println(ugr.getCredits());
+                    System.out.println(ugr.getLocation());
+                    System.out.println(ugr.getLogin());
+                    System.out.println(ugr.getPromo());
+                    System.out.println(ugr.getTitle());
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -726,6 +773,15 @@ public class intraClient extends AsyncTask {
                 System.out.println("userGetRequest failed, error code : " + statusCode);
             }
         });
+    }
+
+    private void println(String s) {
+        System.out.println(s);
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void disconnect() {
