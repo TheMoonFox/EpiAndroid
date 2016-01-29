@@ -1,16 +1,14 @@
 package com.example.max.kikooworld;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.max.kikooworld.Acrobate.AcrobateItems.MarksGetItem;
 import com.example.max.kikooworld.Acrobate.AcrobateItems.MessagesGetItem;
 import com.example.max.kikooworld.Acrobate.MarksGetResponse;
 import com.example.max.kikooworld.Acrobate.MessagesGetResponse;
+import com.example.max.kikooworld.Acrobate.PlanningGetResponse;
 import com.example.max.kikooworld.Acrobate.UserGetResponse;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -21,8 +19,6 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -137,11 +133,11 @@ public class intraClient extends AsyncTask {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String s = "";
-                //PlanningGetRequest pgr;
+                PlanningGetResponse pgr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'planning' request = " + s);
-                    //pgr = new PlanningGetRequest().execute(s);
+                    pgr = (PlanningGetResponse) new PlanningGetResponse().execute(s);
                     println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
