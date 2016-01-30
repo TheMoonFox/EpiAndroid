@@ -10,6 +10,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.max.kikooworld.Shard.AlerteFragment;
+import com.example.max.kikooworld.Shard.HomeFragment;
+import com.example.max.kikooworld.Shard.MessageFragment;
+import com.example.max.kikooworld.Shard.ModulesFragment;
+import com.example.max.kikooworld.Shard.NotesFragment;
+import com.example.max.kikooworld.Shard.PlanningFragment;
+
 public class home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 

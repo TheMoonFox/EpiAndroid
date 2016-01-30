@@ -32,8 +32,8 @@ import cz.msebera.android.httpclient.Header;
 
 public class intraClient extends AsyncTask {
     private static final String BASE_URL = "https://epitech-api.herokuapp.com/";
-    private String photoUrl;
     private static AsyncHttpClient client = new AsyncHttpClient();
+    private HomeFragmentData homeFragmentData = new HomeFragmentData();
 
     public intraClient() {}
 
@@ -65,6 +65,8 @@ public class intraClient extends AsyncTask {
                     lpr = (LoginPostResponse) new LoginPostResponse().execute(s);
                     println("Request OK");
                     Token.value = lpr.getToken();
+                    Token.userLogin = String.valueOf(((EditText) ma.findViewById(R.id.LoginScreenLoginTextField)).getText());
+                    System.out.println("[FOXDEBUG] TOKEN.USERLOGIN = " + Token.userLogin);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -83,7 +85,8 @@ public class intraClient extends AsyncTask {
 
     }
 
-    public void infosPostRequest(final RequestParams champs) {
+    // Renvoie les temps de log
+    public void infosPostRequest(final RequestParams champs, final HomeFragmentData homeFragmentData) {
 
         //parameters :
         // /infos POST
@@ -96,13 +99,13 @@ public class intraClient extends AsyncTask {
                 InfosPostResponse ipr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
-                    System.out.println("[MAXDEBUG] JSON response to 'infos' request = " + s);
-                    ipr = (InfosPostResponse) new InfosPostResponse().execute(s);
-                    System.out.println(ipr.getActiveLog());
+                    homeFragmentData.setJsonInfosRequest(s);
+                    ipr = (InfosPostResponse) new InfosPostResponse().execute(homeFragmentData);
                     println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
+
             }
 
             @Override
@@ -579,7 +582,7 @@ public class intraClient extends AsyncTask {
         });
     }
 
-    public void messagesGetRequest(final RequestParams champs) {
+    public void messagesGetRequest(final RequestParams champs,  final HomeFragmentData homeFragmentData) {
 
         //parameters :
         // /messages GET
@@ -592,11 +595,10 @@ public class intraClient extends AsyncTask {
                 MessagesGetResponse mgr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
-                    System.out.println("[MAXDEBUG] JSON response to 'messages' request = " + s);
-                    mgr = (MessagesGetResponse) new MessagesGetResponse().execute(s);
+                    homeFragmentData.setJsonMessagesRequest(s);
+                    mgr = (MessagesGetResponse) new MessagesGetResponse().execute(homeFragmentData);
                     println("Request OK");
                     ArrayList<MessagesGetItem> lily = mgr.getMessagesGetList();
-                    System.out.println(lily.get(0).getUserUrl());
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -637,7 +639,7 @@ public class intraClient extends AsyncTask {
         });
     }
 
-    public void photoGetRequest(RequestParams params)
+    public void photoGetRequest(RequestParams params,  final HomeFragmentData homeFragmentData)
     {
         get("photo", params, new AsyncHttpResponseHandler() {
             @Override
@@ -646,10 +648,10 @@ public class intraClient extends AsyncTask {
                 PhotoGetResponse pgr;
                 try {
                     response = new String(responseBody, "ISO-8859-1");
-                    pgr = (PhotoGetResponse) new PhotoGetResponse().execute(response);
+                    homeFragmentData.setJsonPhotoRequest(response);
+                    pgr = (PhotoGetResponse) new PhotoGetResponse().execute(homeFragmentData);
                     println("Request OK");
-                }
-                catch (UnsupportedEncodingException e) {
+                } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
             }
@@ -760,6 +762,40 @@ public class intraClient extends AsyncTask {
         });
     }
 
+    public HomeFragmentData getHomeFragmentData()
+    {
+        System.out.println("[FOXDEBUG] CREATION DU HOMEFRAGMENTDATA");
+        // Settage des paramètres //
+        RequestParams infosRequestParam = new RequestParams();
+        RequestParams photoRequestParam = new RequestParams();;
+        RequestParams messagesRequestParam = new RequestParams();;
+        infosRequestParam.put("token", Token.value);
+        photoRequestParam.put("token", Token.value);
+        photoRequestParam.put("login", Token.userLogin);
+        messagesRequestParam.put("token", Token.value);
+        System.out.println("[FOXDEBUG] PARAMETRES DES REQUETES OK");
+        // ----------------------- //
+        // Requètes (et settage des valeurs de la data du fragment home) //
+        this.infosPostRequest(infosRequestParam, this.homeFragmentData);
+        System.out.println("[FOXDEBUG] REQUETE DES LOGS OK");
+        this.photoGetRequest(photoRequestParam, this.homeFragmentData);
+        System.out.println("[FOXDEBUG] REQUETE DE PHOTO OK");
+        this.messagesGetRequest(messagesRequestParam, this.homeFragmentData);
+        System.out.println("[FOXDEBUG] REQUETE DES MESSAGES OK");
+        // ------------------------------------------------------------- //
+        // Test de validité des données  //
+        if (this.homeFragmentData.getActiveLog() == "")
+            System.out.println("[FOXDEBUG] DONNEE INVALIDE : ACTIVELOG (=NULL)");
+        else if (this.homeFragmentData.getPhotoUrl() == "")
+            System.out.println("[FOXDEBUG] DONNEE INVALIDE : URLPHOTO (=NULL)");
+        else if (this.homeFragmentData.getMessagesList() == null)
+            System.out.println("[FOXDEBUG] DONNEE INVALIDE : ACTIVELOG (=NULL)");
+        else
+            System.out.println("[FOXDEBUG] FRAGMENT VALIDE");
+        // ------------------------------ //
+        return this.homeFragmentData;
+    }
+
     public void println(String s) {
         System.out.println(s);
         try {
@@ -767,11 +803,6 @@ public class intraClient extends AsyncTask {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    public String getPhotoUrl()
-    {
-        return (this.photoUrl);
     }
 
     @Override

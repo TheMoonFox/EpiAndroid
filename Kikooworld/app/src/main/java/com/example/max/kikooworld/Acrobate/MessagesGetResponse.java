@@ -3,6 +3,7 @@ package com.example.max.kikooworld.Acrobate;
 import android.os.AsyncTask;
 
 import com.example.max.kikooworld.Acrobate.AcrobateItems.MessagesGetItem;
+import com.example.max.kikooworld.HomeFragmentData;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,12 +15,13 @@ import java.util.ArrayList;
  * Created by Fox on 28/01/2016.
  */
 
-public class MessagesGetResponse extends AsyncTask<String, Void, MessagesGetResponse> {
+public class MessagesGetResponse extends AsyncTask<HomeFragmentData, Void, MessagesGetResponse> {
     private ArrayList<MessagesGetItem> messagesGetList;
 
     @Override
-    protected MessagesGetResponse doInBackground(String... s) {
-        String jsonStr = s[0];
+    protected MessagesGetResponse doInBackground(HomeFragmentData... s) {
+        HomeFragmentData data = s[0];
+        String jsonStr = data.getJsonMessagesRequest();
         messagesGetList = new ArrayList<MessagesGetItem>();
         JSONArray jA = null;
         try { jA = new JSONArray(jsonStr); }
