@@ -27,9 +27,7 @@
             android:adjustViewBounds="true"
             android:background="@drawable/logo"
             android:layout_gravity="center_horizontal"
-            android:contentDescription="logo"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:contentDescription="@string/logo" />
 
         <TextView
             android:layout_width="match_parent"
@@ -46,11 +44,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/LoginScreenLoginTextField"
-            android:editable="true"
-            android:elegantTextHeight="false"
             android:hint="@string/loginLoginScreen"
-            android:textColor="#45a9e1"
-            android:textAlignment="center" />
+            android:textColor="#45a9e1" />
 
         <EditText
             android:layout_width="match_parent"
@@ -59,10 +54,8 @@
             android:ems="10"
             android:id="@+id/LoginScreenPasswordTextField"
             android:layout_gravity="center_horizontal"
-            android:editable="true"
             android:hint="@string/dummyTextLoginScreen"
-            android:textColor="#45a9e1"
-            android:textAlignment="center" />
+            android:textColor="#45a9e1" />
 
     </LinearLayout>
 
@@ -75,9 +68,6 @@
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:clickable="true"
-        android:contextClickable="true"
-        android:onClick=".home.xml"
-        android:allowUndo="false"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="bottom|center_horizontal" />

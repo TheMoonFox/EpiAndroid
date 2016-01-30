@@ -5,31 +5,31 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/home"
-            android:title="Home" />
+            android:title="@string/Home" />
         <item
             android:id="@+id/nav_alertes"
             android:icon="@drawable/alerte"
-            android:title="Alertes" />
+            android:title="@string/Alertes" />
         <item
             android:id="@+id/nav_notes"
             android:icon="@drawable/grade"
-            android:title="Notes" />
+            android:title="@string/Notes" />
         <item
             android:id="@+id/nav_planning"
             android:icon="@drawable/planning"
-            android:title="Planning" />
+            android:title="@string/Planning" />
         <item
             android:id="@+id/nav_messages"
             android:icon="@drawable/message"
-            android:title="Messages" />
+            android:title="@string/Messages" />
         <item
             android:id="@+id/nav_modules"
             android:icon="@drawable/module"
-            android:title="Modules" />
+            android:title="@string/Modules" />
         <item
             android:id="@+id/nav_disco"
             android:icon="@drawable/disco"
-            android:title="Déconnection" />
+            android:title="@string/Disconnection" />
     </group>
 
 </menu>

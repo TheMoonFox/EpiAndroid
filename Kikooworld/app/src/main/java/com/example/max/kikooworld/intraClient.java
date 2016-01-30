@@ -3,10 +3,12 @@ package com.example.max.kikooworld;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.EditText;
 
 import com.example.max.kikooworld.Acrobate.AcrobateItems.MarksGetItem;
 import com.example.max.kikooworld.Acrobate.AcrobateItems.MessagesGetItem;
 import com.example.max.kikooworld.Acrobate.AlertsGetResponse;
+import com.example.max.kikooworld.Acrobate.LoginPostResponse;
 import com.example.max.kikooworld.Acrobate.MarksGetResponse;
 import com.example.max.kikooworld.Acrobate.MessagesGetResponse;
 import com.example.max.kikooworld.Acrobate.PlanningGetResponse;
@@ -63,25 +65,17 @@ public class intraClient extends AsyncTask {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String s = "";
-                //LoginPostResponse lpr;
+                ((EditText) mainActivity.findViewById(R.id.LoginScreenLoginTextField)).setText("");
+                ((EditText) mainActivity.findViewById(R.id.LoginScreenPasswordTextField)).setText("");
+                mainActivity.findViewById(R.id.WrongLogin).setVisibility(View.INVISIBLE);
+                LoginPostResponse lpr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
-                    System.out.println("[FOXDEBUG] JSON response to 'login' request = " + s);
-
-                    // PARSING JSON: REPONSE REQUETE "LOGIN" //
-                    try {
-                        //lpr = new loginPostResponse().execute(s);
-                        println("Request OK");
-                        JSONObject jsonObject = new JSONObject(s);
-                        token = jsonObject.getString("token");
-                        System.out.println("[FOXDEBUG] Parsed JSON Token = " + token);
-                        Intent intent = new Intent(mainActivity, home.class);
-                        mainActivity.startActivity(intent);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    // ------------------------------------- //
-
+                    lpr = (LoginPostResponse) new LoginPostResponse().execute(s);
+                    println("Request OK");
+                    token = lpr.getToken();
+                    Intent intent = new Intent(mainActivity, home.class);
+                    mainActivity.startActivity(intent);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -89,7 +83,7 @@ public class intraClient extends AsyncTask {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                (mainActivity.findViewById(R.id.WrongLogin)).setVisibility(View.VISIBLE);
+                mainActivity.findViewById(R.id.WrongLogin).setVisibility(View.VISIBLE);
             }
         });
     }
