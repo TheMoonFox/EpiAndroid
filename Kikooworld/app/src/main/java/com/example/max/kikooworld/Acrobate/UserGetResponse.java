@@ -2,12 +2,8 @@ package com.example.max.kikooworld.Acrobate;
 
 import android.os.AsyncTask;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
-
-import java.util.Map;
 
 /**
  * Created by Fox on 28/01/2016.

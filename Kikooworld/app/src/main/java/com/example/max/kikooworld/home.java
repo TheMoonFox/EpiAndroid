@@ -1,10 +1,6 @@
 package com.example.max.kikooworld;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,12 +13,21 @@ import android.view.MenuItem;
 public class home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    NavigationView navigationView = null;
+    Toolbar toolbar = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_drawer);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        HomeFragment fragment = new HomeFragment();
+        android.support.v4.app.FragmentTransaction fragmentTransaction =
+                getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -30,7 +35,7 @@ public class home extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -46,41 +51,61 @@ public class home extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        Intent intent = new Intent(this, home.class);
         switch (id){
             case R.id.nav_home :
+                HomeFragment fragment = new HomeFragment();
+                android.support.v4.app.FragmentTransaction fragmentTransaction =
+                        getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container, fragment);
+                fragmentTransaction.commit();
                 break;
             case R.id.nav_alertes :
-                intent = new Intent(this, alerte.class);
+                AlerteFragment a_fragment = new AlerteFragment();
+                android.support.v4.app.FragmentTransaction a_fragmentTransaction =
+                        getSupportFragmentManager().beginTransaction();
+                a_fragmentTransaction.replace(R.id.fragment_container, a_fragment);
+                a_fragmentTransaction.commit();
                 break;
             case R.id.nav_notes :
-                intent = new Intent(this, notes.class);
+                NotesFragment n_fragment = new NotesFragment();
+                android.support.v4.app.FragmentTransaction n_fragmentTransaction =
+                        getSupportFragmentManager().beginTransaction();
+                n_fragmentTransaction.replace(R.id.fragment_container, n_fragment);
+                n_fragmentTransaction.commit();
                 break;
             case R.id.nav_planning :
-                intent = new Intent(this, planning.class);
+                PlanningFragment p_fragment = new PlanningFragment();
+                android.support.v4.app.FragmentTransaction p_fragmentTransaction =
+                        getSupportFragmentManager().beginTransaction();
+                p_fragmentTransaction.replace(R.id.fragment_container, p_fragment);
+                p_fragmentTransaction.commit();
                 break;
             case R.id.nav_messages :
-                intent = new Intent(this, messages.class);
+                MessageFragment me_fragment = new MessageFragment();
+                android.support.v4.app.FragmentTransaction me_fragmentTransaction =
+                        getSupportFragmentManager().beginTransaction();
+                me_fragmentTransaction.replace(R.id.fragment_container, me_fragment);
+                me_fragmentTransaction.commit();
                 break;
             case R.id.nav_modules :
-                intent = new Intent(this, modules.class);
+                ModulesFragment mo_fragment = new ModulesFragment();
+                android.support.v4.app.FragmentTransaction mo_fragmentTransaction =
+                        getSupportFragmentManager().beginTransaction();
+                mo_fragmentTransaction.replace(R.id.fragment_container, mo_fragment);
+                mo_fragmentTransaction.commit();
                 break;
             case R.id.nav_disco :
-                intent = new Intent(this, MainActivity.class);
+                finish();
                 break;
         }
-        startActivity(intent);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
