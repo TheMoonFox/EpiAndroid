@@ -15,6 +15,7 @@ public class home extends AppCompatActivity
 
     NavigationView navigationView = null;
     Toolbar toolbar = null;
+    final intraClient client = new intraClient();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,5 +111,9 @@ public class home extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public intraClient getIntraClient() {
+        return this.client;
     }
 }

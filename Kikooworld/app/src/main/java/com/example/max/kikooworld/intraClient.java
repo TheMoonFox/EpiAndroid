@@ -32,15 +32,10 @@ import cz.msebera.android.httpclient.Header;
 
 public class intraClient extends AsyncTask {
     private static final String BASE_URL = "https://epitech-api.herokuapp.com/";
-    private String token;
     private String photoUrl;
     private static AsyncHttpClient client = new AsyncHttpClient();
-    private MainActivity mainActivity;
 
-    public intraClient(MainActivity mainActivity)
-    {
-        this.mainActivity = mainActivity;
-    }
+    public intraClient() {}
 
     public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
         client.get(getAbsoluteUrl(url), params, responseHandler);
@@ -58,33 +53,34 @@ public class intraClient extends AsyncTask {
         return BASE_URL + relativeUrl;
     }
 
-    public void loginPostRequest(final RequestParams champs)
+    public void loginPostRequest(final RequestParams champs, final MainActivity ma)
     {
         post("login", champs, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String s = "";
-                ((EditText) mainActivity.findViewById(R.id.LoginScreenLoginTextField)).setText("");
-                ((EditText) mainActivity.findViewById(R.id.LoginScreenPasswordTextField)).setText("");
-                mainActivity.findViewById(R.id.WrongLogin).setVisibility(View.INVISIBLE);
                 LoginPostResponse lpr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     lpr = (LoginPostResponse) new LoginPostResponse().execute(s);
                     println("Request OK");
-                    token = lpr.getToken();
-                    Intent intent = new Intent(mainActivity, home.class);
-                    mainActivity.startActivity(intent);
+                    Token.value = lpr.getToken();
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
+                ((EditText) ma.findViewById(R.id.LoginScreenLoginTextField)).setText("");
+                ((EditText) ma.findViewById(R.id.LoginScreenPasswordTextField)).setText("");
+                ma.findViewById(R.id.WrongLogin).setVisibility(View.INVISIBLE);
+                Intent intent = new Intent(ma.getActivity(), home.class);
+                ma.startActivity(intent);
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                mainActivity.findViewById(R.id.WrongLogin).setVisibility(View.VISIBLE);
+                ma.findViewById(R.id.WrongLogin).setVisibility(View.VISIBLE);
             }
         });
+
     }
 
     public void infosPostRequest(final RequestParams champs) {
@@ -764,7 +760,7 @@ public class intraClient extends AsyncTask {
         });
     }
 
-    private void println(String s) {
+    public void println(String s) {
         System.out.println(s);
         try {
             Thread.sleep(500);
@@ -773,21 +769,14 @@ public class intraClient extends AsyncTask {
         }
     }
 
-    public void disconnect() {
-        token = "";
-    }
-
     public String getPhotoUrl()
     {
         return (this.photoUrl);
-    }
-
-    public String getToken() {
-        return this.token;
     }
 
     @Override
     protected Object doInBackground(Object[] params) {
         return null;
     }
+
 }

@@ -13,6 +13,10 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         System.out.println("HomeFragment created");
+        //usage intra client dans les fragments
+        home acti = (home) getActivity();
+        acti.getIntraClient().getPhotoUrl();
+        //\\
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         avatar = (ImageView) view.findViewById(R.id.Avatar);
         return inflater.inflate(R.layout.fragment_home, container, false);
