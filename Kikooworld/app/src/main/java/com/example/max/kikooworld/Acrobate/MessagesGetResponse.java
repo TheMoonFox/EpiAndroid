@@ -3,27 +3,29 @@ package com.example.max.kikooworld.Acrobate;
 import android.os.AsyncTask;
 
 import com.example.max.kikooworld.Acrobate.AcrobateItems.MessagesGetItem;
-import com.example.max.kikooworld.HomeFragmentData;
+import com.example.max.kikooworld.Shard.HomeFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Fox on 28/01/2016.
  */
 
-public class MessagesGetResponse extends AsyncTask<HomeFragmentData, Void, MessagesGetResponse> {
+public class MessagesGetResponse extends AsyncTask<HashMap, Void, MessagesGetResponse> {
     private ArrayList<MessagesGetItem> messagesGetList;
 
     @Override
-    protected MessagesGetResponse doInBackground(HomeFragmentData... s) {
-        HomeFragmentData data = s[0];
-        String jsonStr = data.getJsonMessagesRequest();
+    protected MessagesGetResponse doInBackground(HashMap... s) {
+        HashMap data = s[0];
+        String jsonStr = (String) data.get("JSON");
         messagesGetList = new ArrayList<MessagesGetItem>();
         JSONArray jA = null;
+        HomeFragment hf = (HomeFragment) data.get("Fragment");
         try { jA = new JSONArray(jsonStr); }
         catch (JSONException e) { e.printStackTrace(); }
         System.out.println(jA.length());
@@ -40,9 +42,9 @@ public class MessagesGetResponse extends AsyncTask<HomeFragmentData, Void, Messa
             // Creation d'un item de la liste
             this.messagesGetList.add(new MessagesGetItem(title, userPicture, userTitle,
                     userUrl, content, date)); }
+            hf.setMess(this.messagesGetList);
         } catch (JSONException e) { e.printStackTrace(); }
         return this;
     }
 
-    public ArrayList<MessagesGetItem> getMessagesGetList() { return this.messagesGetList; }
 }

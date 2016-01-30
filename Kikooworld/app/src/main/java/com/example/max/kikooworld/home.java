@@ -20,6 +20,7 @@ import com.example.max.kikooworld.Shard.PlanningFragment;
 public class home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    int current_view = 1;
     NavigationView navigationView = null;
     Toolbar toolbar = null;
     final intraClient client = new intraClient();
@@ -69,46 +70,64 @@ public class home extends AppCompatActivity
 
         switch (id){
             case R.id.nav_home :
-                HomeFragment fragment = new HomeFragment();
-                android.support.v4.app.FragmentTransaction fragmentTransaction =
-                        getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.commit();
+                if (current_view != 1) {
+                    current_view = 1;
+                    HomeFragment fragment = new HomeFragment();
+                    android.support.v4.app.FragmentTransaction fragmentTransaction =
+                            getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.fragment_container, fragment);
+                    fragmentTransaction.commit();
+                }
                 break;
             case R.id.nav_alertes :
-                AlerteFragment a_fragment = new AlerteFragment();
-                android.support.v4.app.FragmentTransaction a_fragmentTransaction =
-                        getSupportFragmentManager().beginTransaction();
-                a_fragmentTransaction.replace(R.id.fragment_container, a_fragment);
-                a_fragmentTransaction.commit();
+                if (current_view != 2) {
+                    current_view = 2;
+                    AlerteFragment a_fragment = new AlerteFragment();
+                    android.support.v4.app.FragmentTransaction a_fragmentTransaction =
+                            getSupportFragmentManager().beginTransaction();
+                    a_fragmentTransaction.replace(R.id.fragment_container, a_fragment);
+                    a_fragmentTransaction.commit();
+                }
                 break;
             case R.id.nav_notes :
-                NotesFragment n_fragment = new NotesFragment();
-                android.support.v4.app.FragmentTransaction n_fragmentTransaction =
-                        getSupportFragmentManager().beginTransaction();
-                n_fragmentTransaction.replace(R.id.fragment_container, n_fragment);
-                n_fragmentTransaction.commit();
+                if (current_view != 3) {
+                    current_view = 3;
+                    NotesFragment n_fragment = new NotesFragment();
+                    android.support.v4.app.FragmentTransaction n_fragmentTransaction =
+                            getSupportFragmentManager().beginTransaction();
+                    n_fragmentTransaction.replace(R.id.fragment_container, n_fragment);
+                    n_fragmentTransaction.commit();
+                }
                 break;
             case R.id.nav_planning :
-                PlanningFragment p_fragment = new PlanningFragment();
-                android.support.v4.app.FragmentTransaction p_fragmentTransaction =
-                        getSupportFragmentManager().beginTransaction();
-                p_fragmentTransaction.replace(R.id.fragment_container, p_fragment);
-                p_fragmentTransaction.commit();
+                if (current_view != 4) {
+                    current_view = 4;
+                    PlanningFragment p_fragment = new PlanningFragment();
+                    android.support.v4.app.FragmentTransaction p_fragmentTransaction =
+                            getSupportFragmentManager().beginTransaction();
+                    p_fragmentTransaction.replace(R.id.fragment_container, p_fragment);
+                    p_fragmentTransaction.commit();
+                }
                 break;
             case R.id.nav_messages :
-                MessageFragment me_fragment = new MessageFragment();
-                android.support.v4.app.FragmentTransaction me_fragmentTransaction =
-                        getSupportFragmentManager().beginTransaction();
-                me_fragmentTransaction.replace(R.id.fragment_container, me_fragment);
-                me_fragmentTransaction.commit();
+                if (current_view != 5) {
+                    current_view = 5;
+                    MessageFragment me_fragment = new MessageFragment();
+                    android.support.v4.app.FragmentTransaction me_fragmentTransaction =
+                            getSupportFragmentManager().beginTransaction();
+                    me_fragmentTransaction.replace(R.id.fragment_container, me_fragment);
+                    me_fragmentTransaction.commit();
+                }
                 break;
             case R.id.nav_modules :
-                ModulesFragment mo_fragment = new ModulesFragment();
-                android.support.v4.app.FragmentTransaction mo_fragmentTransaction =
-                        getSupportFragmentManager().beginTransaction();
-                mo_fragmentTransaction.replace(R.id.fragment_container, mo_fragment);
-                mo_fragmentTransaction.commit();
+                if (current_view != 6) {
+                    current_view = 6;
+                    ModulesFragment mo_fragment = new ModulesFragment();
+                    android.support.v4.app.FragmentTransaction mo_fragmentTransaction =
+                            getSupportFragmentManager().beginTransaction();
+                    mo_fragmentTransaction.replace(R.id.fragment_container, mo_fragment);
+                    mo_fragmentTransaction.commit();
+                }
                 break;
             case R.id.nav_disco :
                 finish();

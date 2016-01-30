@@ -2,33 +2,31 @@ package com.example.max.kikooworld.Acrobate;
 
 import android.os.AsyncTask;
 
-import com.example.max.kikooworld.HomeFragmentData;
+import com.example.max.kikooworld.Shard.HomeFragment;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
 
 /**
  * Created by Fox on 28/01/2016.
  */
 
-public class PhotoGetResponse extends AsyncTask<HomeFragmentData, Void, PhotoGetResponse> {
-    private String urlPhoto;
+public class PhotoGetResponse extends AsyncTask<HashMap, Void, PhotoGetResponse> {
 
         @Override
-        protected PhotoGetResponse doInBackground(HomeFragmentData... s) {
-            HomeFragmentData data = s[0];
-            String jsonStr = data.getJsonPhotoRequest();
+        protected PhotoGetResponse doInBackground(HashMap... s) {
+            HashMap data = s[0];
+            String jsonStr = (String) data.get("JSON");
+            HomeFragment hf = (HomeFragment) data.get("Fragment");
             try {
                 JSONObject jsonObject = new JSONObject(jsonStr);
-                this.urlPhoto = jsonObject.getString("url");
-                System.out.println("[PHOTOGETRESPONSE] url = " + this.urlPhoto);
-                data.setPhotoUrl(this.urlPhoto);
-                System.out.println("[HOMEFRAGMENTDATA] photoUrl = " + data.getPhotoUrl());
+                hf.setFace(jsonObject.getString("url"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
             return this;
         }
-
-    public String getUrlPhoto() { return (this.urlPhoto); }
 }
