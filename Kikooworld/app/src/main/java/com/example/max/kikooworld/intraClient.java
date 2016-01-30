@@ -8,17 +8,16 @@ import android.widget.EditText;
 import com.example.max.kikooworld.Acrobate.AcrobateItems.MarksGetItem;
 import com.example.max.kikooworld.Acrobate.AcrobateItems.MessagesGetItem;
 import com.example.max.kikooworld.Acrobate.AlertsGetResponse;
+import com.example.max.kikooworld.Acrobate.InfosPostResponse;
 import com.example.max.kikooworld.Acrobate.LoginPostResponse;
 import com.example.max.kikooworld.Acrobate.MarksGetResponse;
 import com.example.max.kikooworld.Acrobate.MessagesGetResponse;
+import com.example.max.kikooworld.Acrobate.PhotoGetResponse;
 import com.example.max.kikooworld.Acrobate.PlanningGetResponse;
 import com.example.max.kikooworld.Acrobate.UserGetResponse;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -98,11 +97,12 @@ public class intraClient extends AsyncTask {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String s = "";
-                //InfosPostRequest ipr;
+                InfosPostResponse ipr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     System.out.println("[MAXDEBUG] JSON response to 'infos' request = " + s);
-                    //ipr = new InfosPostRequest().execute(s);
+                    ipr = (InfosPostResponse) new InfosPostResponse().execute(s);
+                    System.out.println(ipr.getActiveLog());
                     println("Request OK");
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
@@ -647,14 +647,12 @@ public class intraClient extends AsyncTask {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String response = "";
-                //PhotoGetResponse pgr;
+                PhotoGetResponse pgr;
                 try {
                     response = new String(responseBody, "ISO-8859-1");
-                    System.out.println("[MAXDEBUG] JSON response to 'photo' request = " + response);
-                    //pgr = new PhotoGetResponse().execute(s);
+                    pgr = (PhotoGetResponse) new PhotoGetResponse().execute(response);
                     println("Request OK");
                 }
-                // ------------------------------------- //
                 catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
