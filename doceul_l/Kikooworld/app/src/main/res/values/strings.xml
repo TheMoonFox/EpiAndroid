@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">Kikooworld</string>
-    <string name="loginLoginScreen">Login</string>
-    <string name="loginButtonLoginScreen">Log in</string>
-    <string name="dummyTextLoginScreen">Intranet Password</string>
-</resources>
