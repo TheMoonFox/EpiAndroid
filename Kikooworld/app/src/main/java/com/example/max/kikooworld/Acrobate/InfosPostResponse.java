@@ -10,18 +10,21 @@ import org.json.JSONObject;
  */
 
 public class InfosPostResponse extends AsyncTask<String, Void, InfosPostResponse> {
+private String activeLog = "";
 
     @Override
-    protected InfosPostResponse doInBackground(String... s) {
+    protected InfosPostResponse doInBackground(String... s)
+    {
         String jsonStr = s[0];
+        JSONObject json = null;
         try {
-            JSONObject jsonObject = new JSONObject(jsonStr);
-            //this.token = jsonObject.getString("token");
-            System.out.println("[FOXDEBUG] Parsed JSON Infos = ");
-            // ---------------------------- //
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            json = new JSONObject(jsonStr);
+            JSONObject history = json.getJSONObject("history");
+            JSONObject current = history.getJSONObject("current");
+            this.activeLog = current.getString("active_log");
+        } catch (JSONException e) { e.printStackTrace(); }
         return this;
     }
+
+    public String getActiveLog() { return this.activeLog; }
 }
