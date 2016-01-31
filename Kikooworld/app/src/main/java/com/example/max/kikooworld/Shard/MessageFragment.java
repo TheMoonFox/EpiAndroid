@@ -13,7 +13,6 @@ public class MessageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        System.out.println("MessagesFragment created");
         View view = inflater.inflate(R.layout.fragment_message, container, false);
         return inflater.inflate(R.layout.fragment_message, container, false);
     }
@@ -21,7 +20,6 @@ public class MessageFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        System.out.println("SPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACE");
     }
 
 }

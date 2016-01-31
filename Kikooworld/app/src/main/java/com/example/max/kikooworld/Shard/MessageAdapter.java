@@ -1,7 +1,9 @@
 package com.example.max.kikooworld.Shard;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import com.example.max.kikooworld.Acrobate.AcrobateItems.MessagesGetItem;
 import com.example.max.kikooworld.R;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -44,7 +47,8 @@ public class MessageAdapter extends ArrayAdapter<MessagesGetItem> {
 
         viewHolder.pseudo.setText(mgi.getTitle());
         viewHolder.text.setText(mgi.getContent());
-        //Picasso.with(getContext()).load(mgi.getUserPicture()).into(viewHolder.avatar);
+        if (!(mgi.getUserPicture() == null || mgi.getUserPicture() == "null"))
+            Picasso.with(getContext()).load(mgi.getUserPicture()).into(viewHolder.avatar);
 
         return convertView;
     }

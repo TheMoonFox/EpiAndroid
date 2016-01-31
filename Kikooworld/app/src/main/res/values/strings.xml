@@ -17,5 +17,6 @@
     <string name="Messages">Messages</string>
     <string name="Modules">Modules</string>
     <string name="Disconnection">Disconnection</string>
+    <string name="dummyTestText">Dummy test text</string>
 
 </resources>

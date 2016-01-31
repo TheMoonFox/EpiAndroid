@@ -30,8 +30,6 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        System.out.println("HomeFragment created");
-        //usage intra client dans les fragments
         home acti = (home) getActivity();
         RequestParams tok = new RequestParams();
         tok.put("token", Token.value);
@@ -40,12 +38,9 @@ public class HomeFragment extends Fragment {
         toklog.put("login", Token.userLogin);
         HashMap hm = new HashMap();
         hm.put("Fragment", this);
-        //live = (ListView) getActivity().findViewById(R.id.messagesList);
         acti.getIntraClient().infosPostRequest(tok, hm);
         acti.getIntraClient().photoGetRequest(toklog, hm);
         acti.getIntraClient().messagesGetRequest(tok, hm);
-        //\\
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
@@ -71,8 +66,6 @@ public class HomeFragment extends Fragment {
 
     public void doMess() {
         live = (ListView) getActivity().findViewById(R.id.messagesList);
-        if (live == null)
-            System.out.println("[CRASH VISTA] Ca va crash");
         MessageAdapter meme = new MessageAdapter(getActivity(), list);
         live.setAdapter(meme);
     }

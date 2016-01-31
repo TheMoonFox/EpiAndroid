@@ -28,9 +28,7 @@ public class MessagesGetResponse extends AsyncTask<HashMap, Void, MessagesGetRes
         HomeFragment hf = (HomeFragment) data.get("Fragment");
         try { jA = new JSONArray(jsonStr); }
         catch (JSONException e) { e.printStackTrace(); }
-        System.out.println(jA.length());
         try { for (int i = 0; i < jA.length(); i++) {
-            System.out.println(i);
             JSONObject json = jA.getJSONObject(i);
             String title = json.getString("title");
             JSONObject user = json.getJSONObject("user");
@@ -39,7 +37,8 @@ public class MessagesGetResponse extends AsyncTask<HashMap, Void, MessagesGetRes
             String content = json.getString("content");
             String date = json.getString("date");
             // Creation d'un item de la liste
-            this.messagesGetList.add(new MessagesGetItem(title, userPicture, userTitle, content, date)); }
+            this.messagesGetList.add(new MessagesGetItem(title, userPicture, userTitle, content, date));
+        }
             hf.setMess(this.messagesGetList);
         } catch (JSONException e) { e.printStackTrace(); }
         return this;
