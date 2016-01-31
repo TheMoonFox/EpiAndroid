@@ -5,8 +5,6 @@ import android.os.AsyncTask;
 import android.view.View;
 import android.widget.EditText;
 
-import com.example.max.kikooworld.Acrobate.AcrobateItems.MarksGetItem;
-import com.example.max.kikooworld.Acrobate.AcrobateItems.MessagesGetItem;
 import com.example.max.kikooworld.Acrobate.AlertsGetResponse;
 import com.example.max.kikooworld.Acrobate.InfosPostResponse;
 import com.example.max.kikooworld.Acrobate.LoginPostResponse;
@@ -24,7 +22,6 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import cz.msebera.android.httpclient.Header;
@@ -69,8 +66,10 @@ public class intraClient extends AsyncTask {
                     lpr = (LoginPostResponse) new LoginPostResponse().execute(s);
                     println("Request OK");
                     Token.value = lpr.getToken();
-                    Token.userLogin = String.valueOf(((EditText) ma.findViewById(R.id.LoginScreenLoginTextField)).getText());
                     System.out.println("[FOXDEBUG] TOKEN.USERLOGIN = " + Token.userLogin);
+                    ((EditText) ma.findViewById(R.id.LoginScreenLoginTextField)).setText("");
+                    ((EditText) ma.findViewById(R.id.LoginScreenPasswordTextField)).setText("");
+                    ma.findViewById(R.id.WrongLogin).setVisibility(View.INVISIBLE);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }

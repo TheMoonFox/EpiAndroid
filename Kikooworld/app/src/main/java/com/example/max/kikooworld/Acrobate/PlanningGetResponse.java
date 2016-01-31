@@ -79,7 +79,7 @@ public class PlanningGetResponse extends AsyncTask<HashMap, Void, PlanningGetRes
                 String past = json.getString("past");
                 String module_available = json.getString("module_available");
                 System.out.println("allow_token == " + allow_token + " event_registered = " + json.getString("event_registered"));
-                if ((tf != null && allow_token == "true" && event_registered == "true") || pf != null)
+                if ((tf != null && allow_token == "true" && event_registered == "registered") || pf != null)
                     this.planningGetList.add(new PlanningGetItem(allowedPlanningEnd, start, allowedPlanningStart, event_registered,
                         totalStudentsRegistered, allowRegister, codemodule, semester, type_code, is_rdv, allow_token,
                         titlemodule, in_more_than_one_month, acti_title, instance_location, nb_hours, roomType, roomSeats, odeacti, codeevent, codeinstance,
