@@ -19,6 +19,7 @@ import java.util.HashMap;
 public class NotesFragment extends Fragment {
     private ArrayList<MarksGetItem> list;
     private ListView live;
+    private ArrayList<MarksGetItem> dummy = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,7 +35,11 @@ public class NotesFragment extends Fragment {
 
     public void doMarks() {
         live = (ListView) getActivity().findViewById(R.id.marksList);
-        MarksAdapter meme = new MarksAdapter(getActivity(), list);
+        MarksAdapter meme;
+        if (list == null)
+            meme = new MarksAdapter(getActivity(), dummy);
+        else
+            meme = new MarksAdapter(getActivity(), list);
         live.setAdapter(meme);
     }
 

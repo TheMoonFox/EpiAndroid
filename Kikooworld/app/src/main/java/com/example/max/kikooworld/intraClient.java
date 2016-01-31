@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.example.max.kikooworld.Acrobate.AlertsGetResponse;
+import com.example.max.kikooworld.Acrobate.AllmodulesGetResponse;
 import com.example.max.kikooworld.Acrobate.InfosPostResponse;
 import com.example.max.kikooworld.Acrobate.LoginPostResponse;
 import com.example.max.kikooworld.Acrobate.MarksGetResponse;
@@ -14,6 +15,7 @@ import com.example.max.kikooworld.Acrobate.PhotoGetResponse;
 import com.example.max.kikooworld.Acrobate.PlanningGetResponse;
 import com.example.max.kikooworld.Acrobate.UserGetResponse;
 import com.example.max.kikooworld.Shard.HomeFragment;
+import com.example.max.kikooworld.Shard.ModulesFragment;
 import com.example.max.kikooworld.Shard.NotesFragment;
 import com.example.max.kikooworld.Shard.PlanningFragment;
 import com.loopj.android.http.AsyncHttpClient;
@@ -331,7 +333,7 @@ public class intraClient extends AsyncTask {
         });
     }
 
-    public void allmodulesGetRequest(final RequestParams champs) {
+    public void allmodulesGetRequest(final RequestParams champs, final HashMap hm) {
 
         //parameters :
         // /allmodules GET
@@ -344,12 +346,14 @@ public class intraClient extends AsyncTask {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String s = "";
-                //AllmodulesGetResponse agr;
+                AllmodulesGetResponse agr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
+                    hm.put("JSON", s);
                     System.out.println("[MAXDEBUG] JSON response to 'allmodules' request = " + s);
-                    //agr = new AllmodulesGetResponse().execute(s);
+                    agr = (AllmodulesGetResponse) new AllmodulesGetResponse().execute(hm);
                     println("Request OK");
+                    ((ModulesFragment) hm.get("Fragment")).doModules();
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -725,7 +729,7 @@ public class intraClient extends AsyncTask {
         });
     }
 
-    public void userGetRequest(final RequestParams champs) {
+    public void userGetRequest(final RequestParams champs, final HashMap hm) {
 
         //parameters :
         // /user GET
@@ -739,15 +743,10 @@ public class intraClient extends AsyncTask {
                 UserGetResponse ugr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
-                    System.out.println("[MAXDEBUG] JSON response to 'user' request = " + s);
-                    ugr = (UserGetResponse) new UserGetResponse().execute(s);
+                    hm.put("JSON", s);
+                    ugr = (UserGetResponse) new UserGetResponse().execute(hm);
                     println("request OK");
-                    System.out.println(ugr.getCourseCode());
-                    System.out.println(ugr.getCredits());
-                    System.out.println(ugr.getLocation());
-                    System.out.println(ugr.getLogin());
-                    System.out.println(ugr.getPromo());
-                    System.out.println(ugr.getTitle());
+                    ((ModulesFragment) hm.get("Fragment")).doNext();
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }

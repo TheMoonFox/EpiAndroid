@@ -44,9 +44,11 @@ public class MarksGetResponse extends AsyncTask<HashMap, Void, MarksGetResponse>
                         codeinstance, codeacti, title, date, correcteur, final_note, comment));
             }
             nf.setMarks(this.marksGetList);
-        } catch (JSONException e) { e.printStackTrace(); }
+        } catch (JSONException e) {
+            e.printStackTrace();
+            nf.setMarks(null);
+        }
         return this;
     }
 
-    public ArrayList<MarksGetItem> getMarksGetList() { return this.marksGetList; }
 }

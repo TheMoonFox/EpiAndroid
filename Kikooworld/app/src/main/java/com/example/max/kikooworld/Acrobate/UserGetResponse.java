@@ -2,8 +2,12 @@ package com.example.max.kikooworld.Acrobate;
 
 import android.os.AsyncTask;
 
+import com.example.max.kikooworld.Shard.ModulesFragment;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
 
 /**
  * Created by Fox on 28/01/2016.
@@ -12,7 +16,7 @@ import org.json.JSONObject;
 login, title, promo, location, course_code, credits, nsstat(active, nslog_norm)
 */
 
-public class UserGetResponse extends AsyncTask<String, Void, UserGetResponse>{
+public class UserGetResponse extends AsyncTask<HashMap, Void, UserGetResponse>{
     private String login;
     private String title;
     private String promo;
@@ -21,8 +25,10 @@ public class UserGetResponse extends AsyncTask<String, Void, UserGetResponse>{
     private String credits;
 
     @Override
-    protected UserGetResponse doInBackground(String... s) {
-        String jsonStr = s[0];
+    protected UserGetResponse doInBackground(HashMap... s) {
+        HashMap hm = s[0];
+        String jsonStr = (String) hm.get("JSON");
+        ModulesFragment mf = (ModulesFragment) hm.get("Fragment");
         try {
             JSONObject jsonObject = new JSONObject(jsonStr);
             this.login = jsonObject.getString("login");
@@ -31,6 +37,9 @@ public class UserGetResponse extends AsyncTask<String, Void, UserGetResponse>{
             this.location = jsonObject.getString("location");
             this.course_code = jsonObject.getString("course_code");
             this.credits = jsonObject.getString("credits");
+            mf.setCourse(this.course_code);
+            mf.setLocation(this.location);
+            mf.setScolaryear(this.promo);
         } catch (JSONException e) {
             e.printStackTrace();
         }

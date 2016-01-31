@@ -19,6 +19,7 @@
     <string name="Disconnection">Disconnect</string>
     <string name="dummyTestText">10</string>
     <string name="notes">Marks</string>
+    <string name="modules">Modules</string>
 
     <string name="validate">See planning</string>
     <string name="logfieldinfo">Active Log:</string>
