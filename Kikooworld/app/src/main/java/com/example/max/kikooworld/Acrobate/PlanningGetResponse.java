@@ -43,7 +43,7 @@ public class PlanningGetResponse extends AsyncTask<HashMap, Void, PlanningGetRes
                 String is_rdv = json.getString("is_rdv");
                 String allow_token = json.getString("allow_token");
                 String titlemodule = json.getString("titlemodule");
-                //String in_more_than_one_month = json.getString("in_more_than_one_month");
+                String in_more_than_one_month = json.getString("in_more_than_one_month");
                 String acti_title = json.getString("acti_title");
                 String instance_location = json.getString("instance_location");
                 String nb_hours = json.getString("nb_hours");
@@ -69,10 +69,10 @@ public class PlanningGetResponse extends AsyncTask<HashMap, Void, PlanningGetRes
                 String module_registered = json.getString("module_registered");
                 String past = json.getString("past");
                 String module_available = json.getString("module_available");
-                System.out.println(end);
+                System.out.println(end + " " + in_more_than_one_month);
                 this.planningGetList.add(new PlanningGetItem(allowedPlanningEnd, start, allowedPlanningStart,
                     totalStudentsRegistered, allowRegister, codemodule, semester, type_code, is_rdv, allow_token,
-                    titlemodule, acti_title, instance_location, nb_hours, roomType, roomSeats, odeacti, codeevent, codeinstance,
+                    titlemodule, in_more_than_one_month, acti_title, instance_location, nb_hours, roomType, roomSeats, odeacti, codeevent, codeinstance,
                     register_student, type_title, num_event, end, scolaryear, module_registered, past, module_available));
         }
             pf.setPlanning(this.planningGetList);

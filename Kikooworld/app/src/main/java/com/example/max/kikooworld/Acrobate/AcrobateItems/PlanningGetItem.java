@@ -17,6 +17,7 @@ public class PlanningGetItem
     private String is_rdv;
     private String allow_token;
     private String titlemodule;
+    private String in_more_than_one_month;
     private String acti_title;
     private String instance_location;
     private String nb_hours;
@@ -37,6 +38,7 @@ public class PlanningGetItem
     public PlanningGetItem(String allowedPlanningEnd, String start, String allowedPlanningStart,
                            String totalStudentsRegistered, String allowRegister, String codemodule, String semester,
                            String type_code, String is_rdv, String allow_token, String titlemodule,
+                           String in_more_than_one_month,
                            String acti_title, String instance_location, String nb_hours, String roomType,
                            String roomSeats, String codeacti, String codeevent, String codeinstance,
                            String register_student, String type_title, String num_event, String end,
@@ -53,6 +55,7 @@ public class PlanningGetItem
         this.is_rdv = is_rdv;
         this.allow_token = allow_token;
         this.titlemodule = titlemodule;
+        this.in_more_than_one_month = in_more_than_one_month;
         this.acti_title = acti_title;
         this.instance_location = instance_location;
         this.nb_hours = nb_hours;
@@ -82,6 +85,7 @@ public class PlanningGetItem
     public String getIs_rdv() { return is_rdv; }
     public String getAllow_token() { return allow_token; }
     public String getTitlemodule() { return titlemodule; }
+    public String getIn_more_than_one_month() { return in_more_than_one_month; }
     public String getActi_title() { return acti_title; }
     public String getInstance_location() { return instance_location; }
     public String getNb_hours() { return nb_hours; }
