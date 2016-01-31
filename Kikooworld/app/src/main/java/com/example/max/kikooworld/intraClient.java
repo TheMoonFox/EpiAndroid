@@ -521,10 +521,10 @@ public class intraClient extends AsyncTask {
                     hm.put("RESPONSE", s);
                     System.out.println("[MAXDEBUG] JSON response to 'token' request = " + s);
                     println("Request OK");
-                    if (statusCode == 200)
-                        ((PlanningAdapter) hm.get("this")).doOKSub();
-                    else
+                    if (statusCode > 200 || s.contains("error"))
                         ((PlanningAdapter) hm.get("this")).doNOKSub();
+                    else
+                        ((PlanningAdapter) hm.get("this")).doOKSub();
 
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
@@ -557,12 +557,13 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     hm.put("RESPONSE", s);
-                    System.out.println("[MAXDEBUG] JSON response to 'token' request = " + s);
+                    System.out.println(statusCode + "[MAXDEBUG] JSON response to 'token' request = " + s);
                     println("Request OK");
-                    if (statusCode == 200)
-                        ((PlanningAdapter) hm.get("this")).doOKUnsub();
-                    else
+                    if (s.contains("error"))
                         ((PlanningAdapter) hm.get("this")).doNOKUnsub();
+                    else
+                        ((PlanningAdapter) hm.get("this")).doOKUnsub();
+
 
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
