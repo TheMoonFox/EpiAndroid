@@ -14,9 +14,11 @@
     <string name="Alertes">Alerts</string>
     <string name="Notes">Notes</string>
     <string name="Planning">Planning</string>
-    <string name="Messages">Messages</string>
+    <string name="Tokens">Tokens</string>
     <string name="Modules">Modules</string>
     <string name="Disconnection">Disconnection</string>
     <string name="dummyTestText">Dummy test text</string>
+
+    <string name="validate">See planning</string>
 
 </resources>

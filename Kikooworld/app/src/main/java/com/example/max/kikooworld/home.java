@@ -12,7 +12,7 @@ import android.view.MenuItem;
 
 import com.example.max.kikooworld.Shard.AlerteFragment;
 import com.example.max.kikooworld.Shard.HomeFragment;
-import com.example.max.kikooworld.Shard.MessageFragment;
+import com.example.max.kikooworld.Shard.TokenFragment;
 import com.example.max.kikooworld.Shard.ModulesFragment;
 import com.example.max.kikooworld.Shard.NotesFragment;
 import com.example.max.kikooworld.Shard.PlanningFragment;
@@ -112,7 +112,7 @@ public class home extends AppCompatActivity
             case R.id.nav_messages :
                 if (current_view != 5) {
                     current_view = 5;
-                    MessageFragment me_fragment = new MessageFragment();
+                    TokenFragment me_fragment = new TokenFragment();
                     android.support.v4.app.FragmentTransaction me_fragmentTransaction =
                             getSupportFragmentManager().beginTransaction();
                     me_fragmentTransaction.replace(R.id.fragment_container, me_fragment);

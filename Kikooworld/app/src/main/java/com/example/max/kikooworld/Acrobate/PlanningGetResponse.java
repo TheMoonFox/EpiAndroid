@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import com.example.max.kikooworld.Acrobate.AcrobateItems.PlanningGetItem;
 import com.example.max.kikooworld.Shard.PlanningFragment;
+import com.example.max.kikooworld.Shard.TokenFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,10 +26,17 @@ public class PlanningGetResponse extends AsyncTask<HashMap, Void, PlanningGetRes
         HashMap hm = s[0];
         planningGetList = new ArrayList<PlanningGetItem>();
         JSONArray jA = null;
-        PlanningFragment pf = (PlanningFragment) hm.get("Fragment");
+        PlanningFragment pf = null;
+        TokenFragment tf = null;
+        if (hm.get("Type") == "Planning")
+            pf = (PlanningFragment) hm.get("Fragment");
+        else
+            tf = (TokenFragment) hm.get("Fragment");
         try { jA = new JSONArray((String) hm.get("JSON")); }
         catch (JSONException e) { e.printStackTrace(); }
         try {
+            if (jA == null)
+                throw new JSONException("NULL");
             for (int i = 0; i < jA.length(); i++)
             {
                 JSONObject json = jA.getJSONObject(i);
@@ -75,8 +83,14 @@ public class PlanningGetResponse extends AsyncTask<HashMap, Void, PlanningGetRes
                     titlemodule, in_more_than_one_month, acti_title, instance_location, nb_hours, roomType, roomSeats, odeacti, codeevent, codeinstance,
                     register_student, type_title, num_event, end, scolaryear, module_registered, past, module_available));
         }
-            pf.setPlanning(this.planningGetList);
-            } catch (JSONException e) { e.printStackTrace(); }
+            if (pf != null)
+                pf.setPlanning(this.planningGetList);
+            //else
+                //tf.setToken(this.planningGetList);
+            } catch (JSONException e) {
+            e.printStackTrace();
+            pf.setPlanning(null);
+        }
         return this;
     }
 

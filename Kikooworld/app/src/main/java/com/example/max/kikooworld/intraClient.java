@@ -68,7 +68,7 @@ public class intraClient extends AsyncTask {
                     lpr = (LoginPostResponse) new LoginPostResponse().execute(s);
                     println("Request OK");
                     Token.value = lpr.getToken();
-                    Token.userLogin = String.valueOf(((EditText) ma.findViewById(R.id.LoginScreenLoginTextField)).getText());
+                    //Token.userLogin = String.valueOf(((EditText) ma.findViewById(R.id.LoginScreenLoginTextField)).getText());
                     System.out.println("[FOXDEBUG] TOKEN.USERLOGIN = " + Token.userLogin);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();

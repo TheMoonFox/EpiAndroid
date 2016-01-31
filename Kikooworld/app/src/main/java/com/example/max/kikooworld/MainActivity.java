@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Token.value = "";
-        Token.userLogin = "";
+        Token.userLogin = "claudo_m";
 
         final Button button = (Button) findViewById(R.id.loginButton);
         button.setOnClickListener(new View.OnClickListener() {
@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
                 RequestParams rq = new RequestParams();
                 String log = String.valueOf(((EditText) findViewById(R.id.LoginScreenLoginTextField)).getText());
-                rq.put("login", log);
-                rq.put("password", ((EditText) findViewById(R.id.LoginScreenPasswordTextField)).getText());
+                rq.put("login", /*log*/"claudo_m");
+                rq.put("password", /*((EditText) findViewById(R.id.LoginScreenPasswordTextField)).getText()*/"6rhxNq;c");
                 client.loginPostRequest(rq, getActivity());
             }
         });
