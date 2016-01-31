@@ -43,6 +43,7 @@ public class PlanningGetResponse extends AsyncTask<HashMap, Void, PlanningGetRes
                 String allowedPlanningEnd = json.getString("allowed_planning_end");
                 String start = json.getString("start");
                 String allowedPlanningStart = json.getString("allowed_planning_start");
+                String event_registered = json.getString("event_registered");
                 String totalStudentsRegistered = json.getString("total_students_registered");
                 String allowRegister = json.getString("allow_register");
                 String codemodule = json.getString("codemodule");
@@ -77,19 +78,23 @@ public class PlanningGetResponse extends AsyncTask<HashMap, Void, PlanningGetRes
                 String module_registered = json.getString("module_registered");
                 String past = json.getString("past");
                 String module_available = json.getString("module_available");
-                System.out.println(end + " " + in_more_than_one_month);
-                this.planningGetList.add(new PlanningGetItem(allowedPlanningEnd, start, allowedPlanningStart,
-                    totalStudentsRegistered, allowRegister, codemodule, semester, type_code, is_rdv, allow_token,
-                    titlemodule, in_more_than_one_month, acti_title, instance_location, nb_hours, roomType, roomSeats, odeacti, codeevent, codeinstance,
-                    register_student, type_title, num_event, end, scolaryear, module_registered, past, module_available));
+                System.out.println("allow_token == " + allow_token + " event_registered = " + json.getString("event_registered"));
+                if ((tf != null && allow_token == "true" && event_registered == "true") || pf != null)
+                    this.planningGetList.add(new PlanningGetItem(allowedPlanningEnd, start, allowedPlanningStart, event_registered,
+                        totalStudentsRegistered, allowRegister, codemodule, semester, type_code, is_rdv, allow_token,
+                        titlemodule, in_more_than_one_month, acti_title, instance_location, nb_hours, roomType, roomSeats, odeacti, codeevent, codeinstance,
+                        register_student, type_title, num_event, end, scolaryear, module_registered, past, module_available));
         }
             if (pf != null)
                 pf.setPlanning(this.planningGetList);
-            //else
-                //tf.setToken(this.planningGetList);
+            else
+                tf.setToken(this.planningGetList);
             } catch (JSONException e) {
             e.printStackTrace();
-            pf.setPlanning(null);
+            if (pf != null)
+                pf.setPlanning(null);
+            else
+                tf.setToken(null);
         }
         return this;
     }

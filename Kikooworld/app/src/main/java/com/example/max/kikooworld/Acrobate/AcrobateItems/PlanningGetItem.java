@@ -6,6 +6,7 @@ package com.example.max.kikooworld.Acrobate.AcrobateItems;
 
 public class PlanningGetItem
 {
+    private final String event_registered;
     private String allowedPlanningEnd;
     private String start;
     private String allowedPlanningStart;
@@ -35,7 +36,7 @@ public class PlanningGetItem
     private String past;
     private String module_available;
 
-    public PlanningGetItem(String allowedPlanningEnd, String start, String allowedPlanningStart,
+    public PlanningGetItem(String allowedPlanningEnd, String start, String allowedPlanningStart, String event_registered,
                            String totalStudentsRegistered, String allowRegister, String codemodule, String semester,
                            String type_code, String is_rdv, String allow_token, String titlemodule,
                            String in_more_than_one_month,
@@ -47,6 +48,7 @@ public class PlanningGetItem
         this.allowedPlanningEnd = allowedPlanningEnd;
         this.start = start;
         this.allowedPlanningStart = allowedPlanningStart;
+        this.event_registered = event_registered;
         this.totalStudentsRegistered = totalStudentsRegistered;
         this.allowRegister = allowRegister;
         this.codemodule = codemodule;
@@ -77,6 +79,7 @@ public class PlanningGetItem
     public String getAllowedPlanningEnd() { return allowedPlanningEnd; }
     public String getStart() { return start; }
     public String getAllowedPlanningStart() { return allowedPlanningStart; }
+    public String getEventRegistered() {return event_registered; }
     public String getTotalStudentsRegistered() { return totalStudentsRegistered; }
     public String getAllowRegister() { return allowRegister; }
     public String getCodemodule() { return codemodule; }

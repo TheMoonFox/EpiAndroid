@@ -18,6 +18,7 @@ import com.example.max.kikooworld.Acrobate.UserGetResponse;
 import com.example.max.kikooworld.Shard.HomeFragment;
 import com.example.max.kikooworld.Shard.NotesFragment;
 import com.example.max.kikooworld.Shard.PlanningFragment;
+import com.example.max.kikooworld.Shard.TokenFragment;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -68,14 +69,11 @@ public class intraClient extends AsyncTask {
                     lpr = (LoginPostResponse) new LoginPostResponse().execute(s);
                     println("Request OK");
                     Token.value = lpr.getToken();
-                    //Token.userLogin = String.valueOf(((EditText) ma.findViewById(R.id.LoginScreenLoginTextField)).getText());
+                    Token.userLogin = String.valueOf(((EditText) ma.findViewById(R.id.LoginScreenLoginTextField)).getText());
                     System.out.println("[FOXDEBUG] TOKEN.USERLOGIN = " + Token.userLogin);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-                ((EditText) ma.findViewById(R.id.LoginScreenLoginTextField)).setText("");
-                ((EditText) ma.findViewById(R.id.LoginScreenPasswordTextField)).setText("");
-                ma.findViewById(R.id.WrongLogin).setVisibility(View.INVISIBLE);
                 Intent intent = new Intent(ma.getActivity(), home.class);
                 ma.startActivity(intent);
             }
@@ -138,7 +136,10 @@ public class intraClient extends AsyncTask {
                     System.out.println("[MAXDEBUG] JSON response to 'planning' request = " + s);
                     pgr = (PlanningGetResponse) new PlanningGetResponse().execute(hm);
                     println("Request OK");
-                    ((PlanningFragment) hm.get("Fragment")).doPlanning();
+                    if (hm.get("Type") == "Planning")
+                        ((PlanningFragment) hm.get("Fragment")).doPlanning();
+                    else
+                        ((TokenFragment) hm.get("Fragment")).doToken();
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
