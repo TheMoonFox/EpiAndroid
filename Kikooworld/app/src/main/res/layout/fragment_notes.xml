@@ -10,11 +10,31 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#c0f1ff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="@string/notes"
+            android:id="@+id/textView"
+            android:layout_gravity="center_horizontal|top"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:layout_marginTop="80dp" />
 
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/marksList" />
+            android:id="@+id/marksList"
+            android:smoothScrollbar="true"
+            android:textAlignment="center"
+            android:fastScrollEnabled="true"
+            android:background="#FF3CA4FF"
+            android:padding="1dp"
+            android:layout_marginTop="20dp"
+            android:stackFromBottom="true" />
+
     </LinearLayout>
+
 </FrameLayout>

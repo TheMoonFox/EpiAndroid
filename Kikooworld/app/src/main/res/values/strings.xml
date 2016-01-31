@@ -17,7 +17,8 @@
     <string name="Tokens">Tokens</string>
     <string name="Modules">Modules</string>
     <string name="Disconnection">Disconnection</string>
-    <string name="dummyTestText">Dummy test text</string>
+    <string name="dummyTestText">10</string>
+    <string name="notes">Notes</string>
 
     <string name="validate">See planning</string>
 
