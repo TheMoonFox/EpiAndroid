@@ -22,6 +22,7 @@ public class PlanningFragment extends Fragment {
     private ArrayList<PlanningGetItem> list;
     private DatePicker dp;
     private ListView live;
+    private ArrayList<PlanningGetItem> dummy = new ArrayList<PlanningGetItem>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,8 +63,12 @@ public class PlanningFragment extends Fragment {
     }
 
     public void doPlanning() {
-        if (this.list == null)
+        if (this.list == null) {
+            live = (ListView) getActivity().findViewById(R.id.planningList);
+            PlanningAdapter meme = new PlanningAdapter(getActivity(), dummy);
+            live.setAdapter(meme);
             System.out.println("Y'a rien à afficher dédé !");
+        }
         else
         {
             live = (ListView) getActivity().findViewById(R.id.planningList);
