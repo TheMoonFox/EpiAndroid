@@ -5,7 +5,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.max.kikooworld.Acrobate.AcrobateItems.MessagesGetItem;
@@ -17,11 +19,13 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class HomeFragment extends Fragment {
     private ArrayList<MessagesGetItem> list;
     private String logTime;
     private String faceURL;
+    private ListView live;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,6 +40,7 @@ public class HomeFragment extends Fragment {
         toklog.put("login", Token.userLogin);
         HashMap hm = new HashMap();
         hm.put("Fragment", this);
+        //live = (ListView) getActivity().findViewById(R.id.messagesList);
         acti.getIntraClient().infosPostRequest(tok, hm);
         acti.getIntraClient().photoGetRequest(toklog, hm);
         acti.getIntraClient().messagesGetRequest(tok, hm);
@@ -65,7 +70,11 @@ public class HomeFragment extends Fragment {
     }
 
     public void doMess() {
-
+        live = (ListView) getActivity().findViewById(R.id.messagesList);
+        if (live == null)
+            System.out.println("[CRASH VISTA] Ca va crash");
+        MessageAdapter meme = new MessageAdapter(getActivity(), list);
+        live.setAdapter(meme);
     }
 
 }

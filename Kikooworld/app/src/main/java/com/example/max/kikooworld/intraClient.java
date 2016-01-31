@@ -600,6 +600,7 @@ public class intraClient extends AsyncTask {
                     hm.put("JSON", s);
                     mgr = (MessagesGetResponse) new MessagesGetResponse().execute(hm);
                     println("Request OK");
+                    ((HomeFragment) hm.get("Fragment")).doMess();
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }

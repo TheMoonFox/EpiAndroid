@@ -36,12 +36,10 @@ public class MessagesGetResponse extends AsyncTask<HashMap, Void, MessagesGetRes
             JSONObject user = json.getJSONObject("user");
             String userPicture = user.getString("picture");
             String userTitle = user.getString("title");
-            String userUrl = user.getString("url");
             String content = json.getString("content");
             String date = json.getString("date");
             // Creation d'un item de la liste
-            this.messagesGetList.add(new MessagesGetItem(title, userPicture, userTitle,
-                    userUrl, content, date)); }
+            this.messagesGetList.add(new MessagesGetItem(title, userPicture, userTitle, content, date)); }
             hf.setMess(this.messagesGetList);
         } catch (JSONException e) { e.printStackTrace(); }
         return this;

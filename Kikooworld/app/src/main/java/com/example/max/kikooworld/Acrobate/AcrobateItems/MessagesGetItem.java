@@ -13,12 +13,11 @@ public class MessagesGetItem {
     private String date;
 
     public MessagesGetItem(String title, String userPicture, String userTitle,
-                           String userUrl, String content, String date)
+                           String content, String date)
     {
         this.title = title;
         this.userPicture = userPicture;
         this.userTitle = userTitle;
-        this.userUrl = userUrl;
         this.content = content;
         this.date = date;
     }
@@ -26,7 +25,6 @@ public class MessagesGetItem {
     public String getTitle(){ return this.title; }
     public String getUserPicture() { return this.userPicture; }
     public String getUserTitle() { return this.userTitle; }
-    public String getUserUrl() { return this.userUrl; }
     public String getContent() { return this.content; }
     public String getDate() { return this.date; }
 }
