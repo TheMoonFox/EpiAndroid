@@ -28,4 +28,13 @@
     <string name="endon">ending:       </string>
     <string name="room">room:</string>
     <string name="students">students:</string>
+    <string name="mod">B5 - TEST</string>
+    <string name="salle">Salle caverne de la mort du bois touffu</string>
+    <string name="rooom">room:</string>
+    <string name="acti">Reunion des syndicats de lOuest</string>
+    <string name="log">login:</string>
+    <string name="realLogin">doceul_l</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="token">Token</string>
+    <string name="roomLabel">room:</string>
 </resources>

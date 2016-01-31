@@ -23,6 +23,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<MessagesGetItem> list;
     private String logTime;
     private String faceURL;
+    private String login;
     private ListView live;
 
     @Override
@@ -56,6 +57,7 @@ public class HomeFragment extends Fragment {
 
     public void doLogTime() {
         ((TextView) getActivity().findViewById(R.id.Log_Time)).setText(this.logTime);
+        ((TextView) getActivity().findViewById(R.id.loginValue)).setText(Token.userLogin);
     }
 
     public void doFace() {
