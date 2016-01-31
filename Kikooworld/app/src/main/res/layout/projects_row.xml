@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#c0f1ff"
     android:padding="15dp">
 
@@ -15,7 +15,9 @@
         tools:text="@string/dummyTestText"
         android:textSize="14sp"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/code_location"
+        android:layout_toStartOf="@+id/code_location" />
 
     <TextView
         android:id="@+id/registered"
@@ -27,6 +29,46 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/beginon"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/registered"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/begin_acti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        tools:text="@string/dummyTestText"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_toRightOf="@+id/textView4"
+        android:layout_toEndOf="@+id/textView4"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/endon"
+        android:id="@+id/textView5"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/end_acti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        tools:text="@string/dummyTestText"
+        android:layout_below="@+id/begin_acti"
+        android:layout_alignLeft="@+id/begin_acti"
+        android:layout_alignStart="@+id/begin_acti" />
+
 
     <TextView
         android:id="@+id/code_location"
@@ -36,32 +78,21 @@
         android:textStyle="bold"
         tools:text="@string/dummyTestText"
         android:textSize="18sp"
-        android:layout_below="@+id/registered"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-
-    <TextView
-        android:id="@+id/correcteur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        tools:text="@string/dummyTestText"
-        android:layout_below="@+id/titlemodule"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:id="@+id/final_note"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="#3a8ebd"
-        tools:text="@string/dummyTestText"
-        android:textStyle="bold"
-        android:textSize="35sp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        tools:text="@string/subscribe"
+        android:textStyle="bold"
+        android:textColor="#4c9c00"
+        android:id="@+id/btnSuscribe"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="4dp" />
+
 
 </RelativeLayout>

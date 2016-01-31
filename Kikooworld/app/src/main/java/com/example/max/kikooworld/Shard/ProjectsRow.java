@@ -9,4 +9,6 @@ public class ProjectsRow {
     public TextView titleproject;
     public TextView registered;
     public TextView code_location;
+    public TextView begin_acti;
+    public TextView end_acti;
 }

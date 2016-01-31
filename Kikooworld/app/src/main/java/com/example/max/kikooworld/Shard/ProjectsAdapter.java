@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.example.max.kikooworld.Acrobate.AcrobateItems.ModulesGetItem;
 import com.example.max.kikooworld.Acrobate.AcrobateItems.ProjectsGetItem;
 import com.example.max.kikooworld.R;
 
@@ -35,6 +34,8 @@ public class ProjectsAdapter extends ArrayAdapter<ProjectsGetItem> {
             viewHolder.titleproject = (TextView) convertView.findViewById(R.id.titleproject);
             viewHolder.registered = (TextView) convertView.findViewById(R.id.registered);
             viewHolder.code_location = (TextView) convertView.findViewById(R.id.code_location);
+            viewHolder.begin_acti = (TextView) convertView.findViewById(R.id.begin_acti);
+            viewHolder.end_acti = (TextView) convertView.findViewById(R.id.end_acti);
             convertView.setTag(viewHolder);
         }
 
@@ -43,7 +44,8 @@ public class ProjectsAdapter extends ArrayAdapter<ProjectsGetItem> {
         viewHolder.titleproject.setText(pgi.getActi_title());
         viewHolder.registered.setText(pgi.getRegistered());
         viewHolder.code_location.setText(pgi.getCode_location());
-
+        viewHolder.begin_acti.setText(pgi.getBegin_acti());
+        viewHolder.end_acti.setText(pgi.getEnd_acti());
         return convertView;
     }
 }
