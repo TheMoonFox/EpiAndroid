@@ -35,7 +35,7 @@ public class ProjectsGetItem {
         this.code_location = code_location;
         this.type_acti_code = type_acti_code;
         this.codeacti = codeacti;
-        this.codeacti = registered;
+        this.registered = registered;
         this.codeinstance = codeinstance;
         this.type_acti = type_acti;
     }

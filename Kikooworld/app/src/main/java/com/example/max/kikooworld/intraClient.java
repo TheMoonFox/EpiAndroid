@@ -13,11 +13,13 @@ import com.example.max.kikooworld.Acrobate.MarksGetResponse;
 import com.example.max.kikooworld.Acrobate.MessagesGetResponse;
 import com.example.max.kikooworld.Acrobate.PhotoGetResponse;
 import com.example.max.kikooworld.Acrobate.PlanningGetResponse;
+import com.example.max.kikooworld.Acrobate.ProjectsGetResponse;
 import com.example.max.kikooworld.Acrobate.UserGetResponse;
 import com.example.max.kikooworld.Shard.HomeFragment;
 import com.example.max.kikooworld.Shard.ModulesFragment;
 import com.example.max.kikooworld.Shard.NotesFragment;
 import com.example.max.kikooworld.Shard.PlanningFragment;
+import com.example.max.kikooworld.Shard.ProjectsFragment;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -149,7 +151,7 @@ public class intraClient extends AsyncTask {
         });
     }
 
-    public void projectsGetRequest(final RequestParams champs) {
+    public void projectsGetRequest(final RequestParams champs, final HashMap hm) {
 
         //parameters :
         // /projects GET
@@ -159,12 +161,14 @@ public class intraClient extends AsyncTask {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String s = "";
-                //ProjectsGetResponse pgr;
+                ProjectsGetResponse pgr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
+                    hm.put("JSON", s);
                     System.out.println("[MAXDEBUG] JSON response to 'projects' request = " + s);
-                    //pgr = new ProjectsGetResponse().execute(s);
+                    pgr = (ProjectsGetResponse) new ProjectsGetResponse().execute(hm);
                     println("Request OK");
+                    ((ProjectsFragment) hm.get("Fragment")).doProjects();
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -350,7 +354,6 @@ public class intraClient extends AsyncTask {
                 try {
                     s = new String(responseBody, "ISO-8859-1");
                     hm.put("JSON", s);
-                    System.out.println("[MAXDEBUG] JSON response to 'allmodules' request = " + s);
                     agr = (AllmodulesGetResponse) new AllmodulesGetResponse().execute(hm);
                     println("Request OK");
                     ((ModulesFragment) hm.get("Fragment")).doModules();

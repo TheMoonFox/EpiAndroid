@@ -39,23 +39,7 @@ public class ModulesFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_modules, container, false);
     }
 
-    public void setScolaryear(String scolaryear) {
-        this.scolaryear = scolaryear;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
-    }
-
     public void doNext() {
-        //"token":"login_token"
-        //"scolaryear":2014
-        //"location":"FR/GAY"
-        //"course":"bachelor/dummy"
         RequestParams rp = new RequestParams();
         rp.put("token", Token.value);
         rp.put("scolaryear", this.scolaryear);
@@ -79,4 +63,17 @@ public class ModulesFragment extends Fragment {
     public void setModules(ArrayList<ModulesGetItem> lily) {
         this.mgi = lily;
     }
+
+    public void setScolaryear(String scolaryear) {
+        this.scolaryear = scolaryear;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
 }

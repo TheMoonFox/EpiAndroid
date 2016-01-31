@@ -37,4 +37,5 @@
     <string name="subscribe">Subscribe</string>
     <string name="token">Token</string>
     <string name="roomLabel">room:</string>
+    <string name="projects">Projects</string>
 </resources>
