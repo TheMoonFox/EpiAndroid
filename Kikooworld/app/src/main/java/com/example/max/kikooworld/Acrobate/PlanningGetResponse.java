@@ -4,7 +4,6 @@ import android.os.AsyncTask;
 
 import com.example.max.kikooworld.Acrobate.AcrobateItems.PlanningGetItem;
 import com.example.max.kikooworld.Shard.PlanningFragment;
-import com.example.max.kikooworld.Shard.TokenFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,19 +18,13 @@ import java.util.HashMap;
 
 public class PlanningGetResponse extends AsyncTask<HashMap, Void, PlanningGetResponse> {
 
-    private ArrayList<PlanningGetItem> planningGetList;
-
     @Override
     protected PlanningGetResponse doInBackground(HashMap... s) {
         HashMap hm = s[0];
-        planningGetList = new ArrayList<PlanningGetItem>();
+        ArrayList<PlanningGetItem> planningGetList = new ArrayList<PlanningGetItem>();
         JSONArray jA = null;
-        PlanningFragment pf = null;
-        TokenFragment tf = null;
-        if (hm.get("Type") == "Planning")
-            pf = (PlanningFragment) hm.get("Fragment");
-        else
-            tf = (TokenFragment) hm.get("Fragment");
+        PlanningFragment pf;
+        pf = (PlanningFragment) hm.get("Fragment");
         try { jA = new JSONArray((String) hm.get("JSON")); }
         catch (JSONException e) { e.printStackTrace(); }
         try {
@@ -79,25 +72,17 @@ public class PlanningGetResponse extends AsyncTask<HashMap, Void, PlanningGetRes
                 String past = json.getString("past");
                 String module_available = json.getString("module_available");
                 System.out.println("allow_token == " + allow_token + " event_registered = " + json.getString("event_registered"));
-                if ((tf != null && allow_token == "true" && event_registered == "registered") || pf != null)
-                    this.planningGetList.add(new PlanningGetItem(allowedPlanningEnd, start, allowedPlanningStart, event_registered,
-                        totalStudentsRegistered, allowRegister, codemodule, semester, type_code, is_rdv, allow_token,
-                        titlemodule, in_more_than_one_month, acti_title, instance_location, nb_hours, roomType, roomSeats, odeacti, codeevent, codeinstance,
-                        register_student, type_title, num_event, end, scolaryear, module_registered, past, module_available));
+                planningGetList.add(new PlanningGetItem(allowedPlanningEnd, start, allowedPlanningStart, event_registered,
+                    totalStudentsRegistered, allowRegister, codemodule, semester, type_code, is_rdv, allow_token,
+                    titlemodule, in_more_than_one_month, acti_title, instance_location, nb_hours, roomType, roomSeats, odeacti, codeevent, codeinstance,
+                    register_student, type_title, num_event, end, scolaryear, module_registered, past, module_available));
         }
-            if (pf != null)
-                pf.setPlanning(this.planningGetList);
-            else
-                tf.setToken(this.planningGetList);
+            pf.setPlanning(planningGetList);
             } catch (JSONException e) {
             e.printStackTrace();
-            if (pf != null)
-                pf.setPlanning(null);
-            else
-                tf.setToken(null);
+            pf.setPlanning(null);
         }
         return this;
     }
 
-    public ArrayList<PlanningGetItem> getPlanningGetList() { return planningGetList; }
 }

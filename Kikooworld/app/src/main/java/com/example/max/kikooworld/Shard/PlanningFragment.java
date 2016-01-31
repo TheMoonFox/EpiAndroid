@@ -58,7 +58,6 @@ public class PlanningFragment extends Fragment {
                 tok.put("start", date);
                 tok.put("end", date);
                 HashMap hm = new HashMap();
-                hm.put("Type", "Planning");
                 hm.put("Fragment", tmp);
                 acti.getIntraClient().planningGetRequest(tok, hm);
 

@@ -16,7 +16,6 @@ import com.example.max.kikooworld.Acrobate.UserGetResponse;
 import com.example.max.kikooworld.Shard.HomeFragment;
 import com.example.max.kikooworld.Shard.NotesFragment;
 import com.example.max.kikooworld.Shard.PlanningFragment;
-import com.example.max.kikooworld.Shard.TokenFragment;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -135,10 +134,7 @@ public class intraClient extends AsyncTask {
                     System.out.println("[MAXDEBUG] JSON response to 'planning' request = " + s);
                     pgr = (PlanningGetResponse) new PlanningGetResponse().execute(hm);
                     println("Request OK");
-                    if (hm.get("Type") == "Planning")
-                        ((PlanningFragment) hm.get("Fragment")).doPlanning();
-                    else
-                        ((TokenFragment) hm.get("Fragment")).doToken();
+                    ((PlanningFragment) hm.get("Fragment")).doPlanning();
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
