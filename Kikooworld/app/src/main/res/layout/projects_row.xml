@@ -85,6 +85,7 @@
     <Button
         android:layout_width="50dp"
         android:layout_height="30dp"
+        android:text="@string/subscribe"
         tools:text="@string/subscribe"
         android:textStyle="bold"
         android:textColor="#4c9c00"
@@ -92,7 +93,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textSize="4dp" />
+        android:textSize="6sp" />
 
 
 </RelativeLayout>
