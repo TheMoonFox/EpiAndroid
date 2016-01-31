@@ -1,9 +1,7 @@
 package com.example.max.kikooworld.Acrobate;
 
 import android.os.AsyncTask;
-import android.widget.TextView;
 
-import com.example.max.kikooworld.R;
 import com.example.max.kikooworld.Shard.HomeFragment;
 
 import org.json.JSONArray;
@@ -35,9 +33,9 @@ public class InfosPostResponse extends AsyncTask<HashMap, Void, InfosPostRespons
             }
             catch (Exception e) { e.printStackTrace(); }
             if (activelogs == null || activelogs.isEmpty() || activelogs.length() == 0 || activelogs == "null")
-                hf.setLogTime("0");
+                hf.setLogTime("0 hours");
             else
-                hf.setLogTime(activelogs);
+                hf.setLogTime(activelogs + " hours");
         } catch (JSONException e) { e.printStackTrace(); }
         System.out.println("[YOYOYO] DOINBACKGROUND INFOSPOSTRESPONSE FIN");
         return this;

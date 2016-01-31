@@ -16,6 +16,7 @@ import com.example.max.kikooworld.home;
 import com.loopj.android.http.RequestParams;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 public class PlanningFragment extends Fragment {
@@ -32,17 +33,20 @@ public class PlanningFragment extends Fragment {
         FrameLayout ll = (FrameLayout)inflater.inflate(R.layout.fragment_planning, container, false);
         //final Button bubu = (Button) ll.findViewById(R.id.totor);
         dp = (DatePicker) ll.findViewById(R.id.datePicker);
-        dp.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        Calendar cal = Calendar.getInstance();
+        dp.init(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
                 RequestParams tok = new RequestParams();
-                String Year = String.valueOf(dp.getYear());
-                int iMonth = dp.getMonth() + 1;
+                String Year = String.valueOf(year);
+                int iMonth = monthOfYear + 1;
                 String Month;
                 if (iMonth <= 9)
                     Month = "0" + String.valueOf(iMonth);
                 else
                     Month = String.valueOf(iMonth);
-                int iDay = dp.getDayOfMonth();
+                int iDay = dayOfMonth;
                 String Day;
                 if (iDay <= 9)
                     Day = "0" + String.valueOf(iDay);
@@ -57,6 +61,7 @@ public class PlanningFragment extends Fragment {
                 hm.put("Type", "Planning");
                 hm.put("Fragment", tmp);
                 acti.getIntraClient().planningGetRequest(tok, hm);
+
             }
         });
         return ll;
