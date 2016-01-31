@@ -1,5 +1,7 @@
 package com.example.max.kikooworld.Shard;
 
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -14,8 +16,10 @@ public class PlanningRow {
     public TextView end;
     public TextView type_title;
     public TextView acti_title;
+    public Button sub;
+    public Button unsub;
+    public Button token;
 
-    /*
     public String allowedPlanningStart;
     public String event_registered;
     public String allowedPlanningEnd;
@@ -30,7 +34,7 @@ public class PlanningRow {
     public String nb_hours;
 
     public String roomSeats;
-    public String odeacti;
+    public String codeacti;
     public String codeevent;
     public String codeinstance;
     public String register_student;
@@ -41,5 +45,9 @@ public class PlanningRow {
     public String module_registered;
     public String past;
     public String module_available;
-    */
+
+    public String is_rdv;
+    public String rdv_group_registered;
+    public String rdv_indiv_registered;
+    public String project;
 }

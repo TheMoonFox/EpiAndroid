@@ -71,11 +71,14 @@ public class PlanningGetResponse extends AsyncTask<HashMap, Void, PlanningGetRes
                 String module_registered = json.getString("module_registered");
                 String past = json.getString("past");
                 String module_available = json.getString("module_available");
+                String rdv_group_reg = json.getString("rdv_group_registered");
+                String r2 = json.getString("rdv_indiv_registered");
+                String p = json.getString("project");
                 System.out.println("allow_token == " + allow_token + " event_registered = " + json.getString("event_registered"));
                 planningGetList.add(new PlanningGetItem(allowedPlanningEnd, start, allowedPlanningStart, event_registered,
                     totalStudentsRegistered, allowRegister, codemodule, semester, type_code, is_rdv, allow_token,
                     titlemodule, in_more_than_one_month, acti_title, instance_location, nb_hours, roomType, roomSeats, odeacti, codeevent, codeinstance,
-                    register_student, type_title, num_event, end, scolaryear, module_registered, past, module_available));
+                    register_student, type_title, num_event, end, scolaryear, module_registered, past, module_available, rdv_group_reg, r2, p));
         }
             pf.setPlanning(planningGetList);
             } catch (JSONException e) {

@@ -35,6 +35,9 @@ public class PlanningGetItem
     private String module_registered;
     private String past;
     private String module_available;
+    private String rdv_group_registered;
+    private String rdv_indiv_registered;
+    private String project;
 
     public PlanningGetItem(String allowedPlanningEnd, String start, String allowedPlanningStart, String event_registered,
                            String totalStudentsRegistered, String allowRegister, String codemodule, String semester,
@@ -43,7 +46,8 @@ public class PlanningGetItem
                            String acti_title, String instance_location, String nb_hours, String roomType,
                            String roomSeats, String codeacti, String codeevent, String codeinstance,
                            String register_student, String type_title, String num_event, String end,
-                           String scolaryear, String module_registered,String past,String module_available)
+                           String scolaryear, String module_registered,String past,String module_available,
+                           String rdv, String rdvBis, String p)
     {
         this.allowedPlanningEnd = allowedPlanningEnd;
         this.start = start;
@@ -74,6 +78,9 @@ public class PlanningGetItem
         this.module_registered = module_registered;
         this.past = past;
         this.module_available = module_available;
+        this.rdv_group_registered = rdv;
+        this.rdv_indiv_registered = rdvBis;
+        this.project = p;
     }
 
     public String getAllowedPlanningEnd() { return allowedPlanningEnd; }
@@ -105,4 +112,16 @@ public class PlanningGetItem
     public String getModule_registered() { return module_registered; }
     public String getPast() { return past; }
     public String getModule_available() { return module_available; }
+
+    public String getRdv_group_registered() {
+        return rdv_group_registered;
+    }
+
+    public String getRdv_indiv_registered() {
+        return rdv_indiv_registered;
+    }
+
+    public String getProject() {
+        return project;
+    }
 }

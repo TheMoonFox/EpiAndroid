@@ -6,4 +6,6 @@ package com.example.max.kikooworld;
 public class Token {
     public static String value;
     public static String userLogin;
+    public static intraClient glob;
+    public static home Home;
 }

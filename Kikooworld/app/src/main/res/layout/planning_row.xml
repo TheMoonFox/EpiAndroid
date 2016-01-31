@@ -143,16 +143,44 @@
 
         </LinearLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="31dp"
-            android:text="@string/subscribe"
-            android:id="@+id/btnSubscribe"
-            tools:text="@string/subscribe"
-            android:textSize="10dp"
-            android:textStyle="bold"
-            android:textColor="#4c9c00"
-            android:layout_alignParentBottom="true" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/subscribe"
+                android:id="@+id/btnSub"
+                tools:text="@string/subscribe"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="#4c9c00" />
+
+            <Button
+                tools:text="@string/subscribe"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/unsubscribe"
+                android:id="@+id/btnUnSub"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="#4c9c00"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center" />
+
+            <Button
+                tools:text="@string/subscribe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sendToken"
+                android:id="@+id/btnToken"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="#4c9c00" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

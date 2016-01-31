@@ -1,5 +1,8 @@
 package com.example.max.kikooworld;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.view.View;
@@ -14,10 +17,12 @@ import com.example.max.kikooworld.Acrobate.MessagesGetResponse;
 import com.example.max.kikooworld.Acrobate.PhotoGetResponse;
 import com.example.max.kikooworld.Acrobate.PlanningGetResponse;
 import com.example.max.kikooworld.Acrobate.ProjectsGetResponse;
+import com.example.max.kikooworld.Acrobate.TokenPostResponse;
 import com.example.max.kikooworld.Acrobate.UserGetResponse;
 import com.example.max.kikooworld.Shard.HomeFragment;
 import com.example.max.kikooworld.Shard.ModulesFragment;
 import com.example.max.kikooworld.Shard.NotesFragment;
+import com.example.max.kikooworld.Shard.PlanningAdapter;
 import com.example.max.kikooworld.Shard.PlanningFragment;
 import com.example.max.kikooworld.Shard.ProjectsFragment;
 import com.loopj.android.http.AsyncHttpClient;
@@ -213,7 +218,7 @@ public class intraClient extends AsyncTask {
         });
     }
 
-    public void projectPostRequest(final RequestParams champs) {
+    public void projectPostRequest(final RequestParams champs, HashMap hm) {
 
         //parameters :
         // /project POST
@@ -245,7 +250,7 @@ public class intraClient extends AsyncTask {
         });
     }
 
-    public void projectDeleteRequest(final RequestParams champs) {
+    public void projectDeleteRequest(final RequestParams champs, HashMap hm) {
 
         //parameters :
         // /project DELETE
@@ -495,7 +500,7 @@ public class intraClient extends AsyncTask {
         });
     }
 
-    public void eventPostRequest(final RequestParams champs) {
+    public void eventPostRequest(final RequestParams champs, final HashMap hm) {
 
         //parameters :
         // /event POST
@@ -510,12 +515,17 @@ public class intraClient extends AsyncTask {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String s = "";
-                //EventPostRequest epr;
+                TokenPostResponse tpr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
-                    System.out.println("[MAXDEBUG] JSON response to 'event' request = " + s);
-                    //epr = new EventPostResponse().execute(s);
+                    hm.put("RESPONSE", s);
+                    System.out.println("[MAXDEBUG] JSON response to 'token' request = " + s);
                     println("Request OK");
+                    if (statusCode == 200)
+                        ((PlanningAdapter) hm.get("this")).doOKSub();
+                    else
+                        ((PlanningAdapter) hm.get("this")).doNOKSub();
+
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -523,12 +533,12 @@ public class intraClient extends AsyncTask {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                System.out.println("eventPostRequest failed, error code : " + statusCode);
+                ((PlanningAdapter) hm.get("this")).doNOKSub();
             }
         });
     }
 
-    public void eventDeleteRequest(final RequestParams champs) {
+    public void eventDeleteRequest(final RequestParams champs, final HashMap hm) {
 
         //parameters :
         // /event DELETE
@@ -543,12 +553,17 @@ public class intraClient extends AsyncTask {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String s = "";
-                //EventDeleteResponse edr;
+                TokenPostResponse tpr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
-                    System.out.println("[MAXDEBUG] JSON response to 'event' request = " + s);
-                    //edr = new EventDeleteResponse().execute(s);
+                    hm.put("RESPONSE", s);
+                    System.out.println("[MAXDEBUG] JSON response to 'token' request = " + s);
                     println("Request OK");
+                    if (statusCode == 200)
+                        ((PlanningAdapter) hm.get("this")).doOKUnsub();
+                    else
+                        ((PlanningAdapter) hm.get("this")).doNOKUnsub();
+
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -556,7 +571,7 @@ public class intraClient extends AsyncTask {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                System.out.println("eventDeleteRequest failed, error code : " + statusCode);
+                ((PlanningAdapter) hm.get("this")).doNOKUnsub();
             }
         });
     }
@@ -668,8 +683,7 @@ public class intraClient extends AsyncTask {
         });
     }
 
-    public void tokenPostRequest(final RequestParams champs) {
-
+    public void tokenPostRequest(final RequestParams champs, final HashMap hm) {
         //parameters :
         // /token POST
         //"token":"login_token"
@@ -684,12 +698,17 @@ public class intraClient extends AsyncTask {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 String s = "";
-                //TokenPostRequest tpr;
+                TokenPostResponse tpr;
                 try {
                     s = new String(responseBody, "ISO-8859-1");
+                    hm.put("RESPONSE", s);
                     System.out.println("[MAXDEBUG] JSON response to 'token' request = " + s);
-                    //tpr = new TokenPostResponse().execute(s);
                     println("Request OK");
+                    if (statusCode == 200)
+                        ((PlanningAdapter) hm.get("this")).doBibi();
+                    else
+                        ((PlanningAdapter) hm.get("this")).doBibo();
+
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
@@ -697,7 +716,7 @@ public class intraClient extends AsyncTask {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                System.out.println("tokenPostRequest failed, error code : " + statusCode);
+                ((PlanningAdapter) hm.get("this")).doBibo();
             }
         });
     }
