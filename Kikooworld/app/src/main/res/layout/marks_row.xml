@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#c0f1ff">
+    android:background="#c0f1ff"
+    android:padding="15dp">
 
     <TextView
         android:id="@+id/titlemodule"
@@ -14,7 +15,8 @@
         tools:text="@string/dummyTestText"
         android:textSize="14sp"
         android:layout_below="@+id/titletitle"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/date"
@@ -23,8 +25,8 @@
         android:textColor="@android:color/black"
         tools:text="@string/dummyTestText"
         android:layout_below="@+id/correcteur"
-        android:layout_toRightOf="@+id/correcteur"
-        android:layout_toEndOf="@+id/correcteur" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
     <TextView
@@ -34,9 +36,10 @@
         android:textColor="@android:color/black"
         android:textStyle="bold"
         tools:text="@string/dummyTestText"
-        android:textSize="25sp"
+        android:textSize="18dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 
     <TextView
@@ -45,8 +48,6 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
         tools:text="@string/dummyTestText"
-        android:layout_marginLeft="34dp"
-        android:layout_marginStart="34dp"
         android:layout_below="@+id/titlemodule"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -58,10 +59,9 @@
         android:textColor="@android:color/black"
         tools:text="@string/dummyTestText"
         android:textStyle="bold"
-        android:textSize="50sp"
-        android:layout_alignTop="@+id/correcteur"
+        android:textSize="35dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="40dp" />
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
