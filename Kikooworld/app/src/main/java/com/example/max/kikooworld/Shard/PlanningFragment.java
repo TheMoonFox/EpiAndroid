@@ -5,10 +5,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.max.kikooworld.Acrobate.AcrobateItems.PlanningGetItem;
@@ -31,9 +29,9 @@ public class PlanningFragment extends Fragment {
         final home acti = (home) getActivity();
         final PlanningFragment tmp = this;
         FrameLayout ll = (FrameLayout)inflater.inflate(R.layout.fragment_planning, container, false);
-        final Button bubu = (Button) ll.findViewById(R.id.totor);
+        //final Button bubu = (Button) ll.findViewById(R.id.totor);
         dp = (DatePicker) ll.findViewById(R.id.datePicker);
-        bubu.setOnClickListener(new View.OnClickListener() {
+        dp.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 RequestParams tok = new RequestParams();
                 String Year = String.valueOf(dp.getYear());
@@ -66,6 +64,12 @@ public class PlanningFragment extends Fragment {
     public void doPlanning() {
         if (this.list == null)
             System.out.println("Y'a rien à afficher dédé !");
+        else
+        {
+            live = (ListView) getActivity().findViewById(R.id.planningList);
+            PlanningAdapter meme = new PlanningAdapter(getActivity(), list);
+            live.setAdapter(meme);
+        }
     }
 
     public void setPlanning(ArrayList<PlanningGetItem> planning) {

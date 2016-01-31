@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Shard.HomeFragment"
-    android:background="#e8e8e8">
+    android:background="#e8e8e8"
+    android:paddingTop="55dp">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -11,38 +12,62 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center_horizontal|bottom"
-        android:background="#c0f1ff">
+        android:background="#ffffff">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/Avatar"
-            android:background="#FF3CA4FF"
-            android:padding="1dp"
-            android:layout_marginTop="80dp" />
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Avatar"
+                android:background="#FF3CA4FF"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/Login"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/logfieldinfo"
+                android:id="@+id/textView2"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/Log_Time"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/Login"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/Log_Time"
+            android:text="@string/messages"
+            android:id="@+id/textView3"
             android:layout_gravity="center_horizontal" />
 
         <ListView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/messagesList"
             android:background="#FF3CA4FF"
             android:padding="1dp"
-            android:layout_marginTop="20dp" />
+            android:nestedScrollingEnabled="false"
+            android:scrollingCache="false"
+            android:smoothScrollbar="true" />
 
     </LinearLayout>
 

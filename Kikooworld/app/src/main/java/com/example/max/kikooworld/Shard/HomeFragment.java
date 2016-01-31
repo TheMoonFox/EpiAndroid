@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,7 +18,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class HomeFragment extends Fragment {
     private ArrayList<MessagesGetItem> list;
@@ -61,6 +59,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void doFace() {
+        System.out.println("URL:" + this.faceURL);
         Picasso.with(getContext()).load(this.faceURL).into((ImageView) getActivity().findViewById(R.id.Avatar));
     }
 

@@ -12,14 +12,19 @@
     <string name="photo">photo</string>
     <string name="Home">Home</string>
     <string name="Alertes">Alerts</string>
-    <string name="Notes">Notes</string>
+    <string name="Notes">Marks</string>
     <string name="Planning">Planning</string>
     <string name="Tokens">Tokens</string>
     <string name="Modules">Modules</string>
-    <string name="Disconnection">Disconnection</string>
+    <string name="Disconnection">Disconnect</string>
     <string name="dummyTestText">10</string>
-    <string name="notes">Notes</string>
+    <string name="notes">Marks</string>
 
     <string name="validate">See planning</string>
-
+    <string name="logfieldinfo">Active Log:</string>
+    <string name="messages">Messages</string>
+    <string name="beginon">beginning:  </string>
+    <string name="endon">ending:       </string>
+    <string name="room">room:</string>
+    <string name="students">students:</string>
 </resources>
