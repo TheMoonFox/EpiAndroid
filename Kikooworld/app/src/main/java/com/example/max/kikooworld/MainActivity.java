@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
                 String log = String.valueOf(((EditText) findViewById(R.id.LoginScreenLoginTextField)).getText());
                 rq.put("login", log);
                 rq.put("password", ((EditText) findViewById(R.id.LoginScreenPasswordTextField)).getText());
-                Token.userLogin = log;
+                Token.userLogin = log.toLowerCase();
                 client.loginPostRequest(rq, getActivity());
             }
         });

@@ -31,10 +31,14 @@ public class MessagesGetResponse extends AsyncTask<HashMap, Void, MessagesGetRes
         try { for (int i = 0; i < jA.length(); i++) {
             JSONObject json = jA.getJSONObject(i);
             String title = json.getString("title");
+            while (title.contains("<") && title.contains(">") && title.indexOf("<") < title.indexOf(">"))
+                title = title.substring(0, title.indexOf("<")) + title.substring(title.indexOf(">") + 1, title.length());
             JSONObject user = json.getJSONObject("user");
             String userPicture = user.getString("picture");
             String userTitle = user.getString("title");
             String content = json.getString("content");
+            while (content.contains("<") && content.contains(">") && content.indexOf("<") < content.indexOf(">"))
+                content = content.substring(0, content.indexOf("<")) + content.substring(content.indexOf(">") + 1, content.length());
             String date = json.getString("date");
             // Creation d'un item de la liste
             this.messagesGetList.add(new MessagesGetItem(title, userPicture, userTitle, content, date));
